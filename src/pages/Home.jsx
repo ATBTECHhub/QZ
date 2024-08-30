@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Features from "../components/Features";
 import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer";
+import Ready from "../components/Ready";
+import Testimonial from "../components/Testimonial";
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
       <Hero />
       <Features />
       <AboutUs />
+      <Testimonial />
+      <Ready />
       <Footer />
     </>
   );
