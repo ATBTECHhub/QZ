@@ -14,7 +14,7 @@ const Ready = () => {
             <br />
             experience using our application
           </p>
-          <Link to="/">
+          <Link to="/signup">
             <button className="text-base text-darkPrimary bg-[#E6E6E9] rounded-[42px] border-[2px] px-[52px] py-2 border-darkPrimary">
               Start Now
             </button>

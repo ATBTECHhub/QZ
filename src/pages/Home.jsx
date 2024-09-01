@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Ready from "../components/Ready";
 import Testimonial from "../components/Testimonial";
 
+
 const Home = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const Home = () => {
       <Testimonial />
       <Ready />
       <Footer />
+      
     </>
   );
 };
