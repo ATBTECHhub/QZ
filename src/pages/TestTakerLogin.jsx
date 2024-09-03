@@ -26,7 +26,11 @@ const TestTakerLogin = () => {
             </div>
 
             <div className="mb-9">
-              <label className="block text-[#231F20CC] text-sm font-bold mb-2">
+              <label
+                className="block text-[#231F20CC] text-sm font-bold mb-2"
+                id="email"
+                type="email"
+              >
                 Email address
               </label>
               <input

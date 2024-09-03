@@ -40,7 +40,11 @@ const creatorSignup = () => {
                   </div>
                 </div>
                 <div className="mb-4">
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    id="email"
+                    type="email"
+                  >
                     Email address
                   </label>
                   <input
