@@ -7,7 +7,7 @@ const takerSignup = () => {
       <div>
         <Navbar />
       </div>
-      <div className=" bg-[#f2f1ed] mt4 container ">
+      <div className=" bg-[#f2f1ed] pt-24 lg:pt-10 container ">
         <div className=" grid lg:grid-cols-[30%_30%] container  justify-center items-center mt-2">
           <img
             src={signupTakerImg}
@@ -15,9 +15,9 @@ const takerSignup = () => {
             className=" items-center hidden lg:block h-[597px]"
           />
 
-          <div className="grid items-center justify-center gap-2 h-[420px] w-[277px] lg:w-[400px] bg-white">
-            <div className="w-full max-w-md gap-2  ">
-              <h2 className="text-2xl font-bold text-center mb-8">
+          <div className="grid items-center justify-center h-[420px] w-[277px] lg:w-[400px] bg-white">
+            <div className="w-full max-w-md  ">
+              <h2 className="text-2xl font-bold text-center mb-2">
                 Register to take assessment
               </h2>
               <form className="ml-2 w-[260px] lg:w-[350px]">
@@ -27,30 +27,30 @@ const takerSignup = () => {
                       First Name
                     </label>
                     <input
-                      className=" border rounded w-full py-2 px-3 bg-[#FAF7ED]"
+                      className=" border rounded w-full py-2 px-3 bg-light"
                       placeholder="Enter First Name"
                     />
                   </div>
-                  <div className="mb-4">
+                  <div className="mb-2">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
                       Last Name
                     </label>
                     <input
-                      className=" border rounded w-full py-2 px-3 bg-[#FAF7ED]"
+                      className=" border rounded w-full py-2 px-3 bg-light"
                       placeholder="Enter Last Name"
                     />
                   </div>
                 </div>
-                <div className="mb-4">
+                <div className="mb-2">
                   <label className="block text-gray-700 text-sm font-bold mb-2">
                     Email address
                   </label>
                   <input
-                    className=" border rounded w-full py-2 px-3 bg-[#FAF7ED]"
+                    className=" border rounded w-full py-2 px-3 bg-light"
                     placeholder="your@email.com"
                   />
                 </div>
-                <div className="mb-6">
+                <div className="mb-2">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
                     htmlFor="password"
@@ -58,7 +58,7 @@ const takerSignup = () => {
                     Password
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#FAF7ED] mb-3 "
+                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-light mb-3 "
                     id="password"
                     type="password"
                     placeholder="******************"
@@ -67,7 +67,7 @@ const takerSignup = () => {
 
                 <div className="flex items-center  justify-center ">
                   <button
-                    className="bg-[#104573] hover:bg-[#0b304f] text-white font-bold py-2 px-[55px] rounded-lg"
+                    className="bg-[#104573] hover:bg-[#0b304f] text-white font-bold py-2 px-14 rounded-lg"
                     type="submit"
                   >
                     Register
@@ -78,7 +78,7 @@ const takerSignup = () => {
           </div>
         </div>
 
-        <div className="flex text-[13px] lg:gap-[452px] gap-10 mt-3 mb-1 font-fustat max-h-none lg:h-16 container ">
+        <div className="flex text-[13px] lg:gap-[452px] gap-10 mt-3 mb-1 max-h-none lg:h-16 ">
           <h6>
             QZ Platform - Licensed by the National Authority of Technology
             Development, Nigeria.

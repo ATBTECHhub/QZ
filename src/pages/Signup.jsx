@@ -10,8 +10,8 @@ const Signup = () => {
       <div>
         <Navbar />
       </div>
-      <div className="font-rubik container text-center">
-        <h1 className=" text-4xl font-extrabold mt-20 ">Register for free</h1>
+      <div className="font-rubik container pt-32 lg:pt-32 text-center">
+        <h1 className=" text-4xl font-extrabold mt20 ">Register for free</h1>
         <p className=" text-4xl font-extrabold text-[#F3B855] mt-16 ">
           Unlock Powerful Features and elevate Your Experience
         </p>

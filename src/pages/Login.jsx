@@ -8,13 +8,13 @@ const Login = () => {
       <div>
         <Navbar />
       </div>
-      <div className=" bg-[#f2f1ed] mt-4 container">
+      <div className=" bg-light pt-20  container">
         <div className="grid lg:grid-cols-[30%_30%] container  justify-center items-center mt-16 ">
           <img src={loginImg} alt="loginImg" className="hidden lg:block" />
 
-          <div className="grid items-center justify-center h-[450px] bg-white">
+          <div className="grid items-center justify-center h-[390px] bg-white">
             <div className="w-full max-w-md p-4 bg-white">
-              <h2 className="text-3xl font-bold font-rubik text-center mb-5">
+              <h2 className="text-3xl font-bold font-rubik text-center mb-2">
                 Login to your account
               </h2>
               <form className="h-[2">
@@ -23,7 +23,7 @@ const Login = () => {
                     Email address
                   </label>
                   <input
-                    className=" border rounded w-full py-2 px-3 bg-[#FAF7ED] "
+                    className=" border rounded w-full py-2 px-3 bg-light "
                     id="email"
                     type="email"
                     placeholder="your@email.com"
@@ -34,7 +34,7 @@ const Login = () => {
                     Password
                   </label>
                   <input
-                    className="rounded w-full py-2 px-3 bg-[#FAF7ED] mb-3"
+                    className="rounded w-full py-2 px-3 bg-light mb-3"
                     id="password"
                     type="password"
                     placeholder="******************"
@@ -45,7 +45,7 @@ const Login = () => {
                   <select
                     id="list"
                     name="list"
-                    className="bg-[#FAF7ED] shadow appearance-none border rounded w-full py-2 px-3 "
+                    className="bg-light shadow appearance-none border rounded w-full py-2 px-3 "
                   >
                     <option value="select">Select</option>
                     <option value="test-taker">Test-Taker</option>
@@ -71,7 +71,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="flex text-[13px] lg:gap-[452px] gap-10 container mt-16 mb-16 font-fustat max-h-none lg:h-16 ">
+        <div className="flex text-[13px] lg:gap-[350px] gap-10 container mt-16 mb-16 font-fustat max-h-none lg:h-16 ">
           <h6>
             QZ Platform - Licensed by the National Authority of Technology
             Development, Nigeria.

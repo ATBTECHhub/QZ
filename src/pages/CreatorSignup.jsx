@@ -6,16 +6,16 @@ const creatorSignup = () => {
       <div>
         <Navbar />
       </div>
-      <div className=" bg-[#f2f1ed] mt-4 gap-1 container">
-        <div className="grid lg:grid-cols-[30%_30%] containe  justify-center items-center mt-16  ">
+      <div className=" bg-light  gap-1 pt-32 container">
+        <div className="grid lg:grid-cols-[30%_30%] justify-center items-center container  ">
           <img
             src={signupCreatorImg}
             alt="signupCreatorImg"
             className=" items-center hidden lg:block "
           />
-          <div className="grid items-center justify-center h-[450px] bg-white ">
+          <div className="grid items-center justify-center h-[400px] w-[398px] bg-white ">
             <div className="w-full max-w-md p-4 ">
-              <h2 className="text-2xl font-bold text-center mb-16">
+              <h2 className="text-2xl font-bold text-center mb-8">
                 Register to Create Assessment
               </h2>
               <form className="ml-2 w-[260px] lg:w-[350px]">
@@ -25,7 +25,7 @@ const creatorSignup = () => {
                       First Name
                     </label>
                     <input
-                      className=" border rounded w-full py-2 px-3 bg-[#FAF7ED] "
+                      className=" border rounded w-full py-2 px-3 bg-light "
                       placeholder="Enter First Name"
                     />
                   </div>
@@ -34,7 +34,7 @@ const creatorSignup = () => {
                       Last Name
                     </label>
                     <input
-                      className=" border rounded w-full py-2 px-3 bg-[#FAF7ED] "
+                      className=" border rounded w-full py-2 px-3 bg-light "
                       placeholder="Enter Last Name"
                     />
                   </div>
@@ -44,7 +44,7 @@ const creatorSignup = () => {
                     Email address
                   </label>
                   <input
-                    className=" border rounded w-full py-2 px-3 bg-[#FAF7ED] "
+                    className=" border rounded w-full py-2 px-3 bg-light "
                     placeholder="your@email.com"
                   />
                 </div>
@@ -75,7 +75,7 @@ const creatorSignup = () => {
           </div>
         </div>
 
-        <div className="flex text-[13px] lg:gap-[452px] gap-10 mt-16 mb-16 font-fustat max-h-none lg:h-16 container ">
+        <div className="flex text-[13px] lg:gap-[350px] gap-10 mt-16 mb-16 font-fustat max-h-none lg:h-16 container  ">
           <h6>
             QZ Platform - Licensed by the National Authority of Technology
             Development, Nigeria.

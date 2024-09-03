@@ -6,21 +6,28 @@ import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer";
 import Ready from "../components/Ready";
 import Testimonial from "../components/Testimonial";
+import TestTakerLogin from "./TestTakerLogin";
+import TestSubmitted from "./TestSubmitted";
+import Anonymous from "./Anonymous";
+
 
 
 const Home = () => {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <Features />
-      <AboutUs />
-      <Testimonial />
-      <Ready />
-      <Footer />
+      {/* <Navbar /> */}
+      {/* <Hero /> */}
+      {/* <Features /> */}
+      {/* <AboutUs /> */}
+      {/* <Testimonial /> */}
+      {/* <Ready /> */}
+      {/* <Footer /> */}
       
 
-      <> test taker page
+      <> 
+      {/* <TestTakerLogin/> */}
+      <TestSubmitted/> not finish
+      {/* <Anonymous/> */}
       
       </>
     </>
