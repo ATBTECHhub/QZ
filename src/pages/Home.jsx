@@ -9,6 +9,7 @@ import Testimonial from "../components/Testimonial";
 import TestTakerLogin from "./TestTakerLogin";
 import TestSubmitted from "./TestSubmitted";
 import Anonymous from "./Anonymous";
+import EditProfile from "./EditProfile";
 
 
 
@@ -27,7 +28,8 @@ const Home = () => {
       <> 
       {/* <TestTakerLogin/> */}
       {/* <Anonymous/> */}
-      <TestSubmitted/> not finish
+      {/* <TestSubmitted/> */}
+      <EditProfile/>
       
       </>
     </>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import signupTakerImg from "../assets/signupTakerImg.svg";
 import Navbar from "../components/Navbar";
 
@@ -88,8 +89,12 @@ const takerSignup = () => {
             Development, Nigeria.
           </h6>
           <div className="flex gap-4 lg:gap-20">
-            <p>Privacy policy</p>
-            <p>Terms and conditions</p>
+            <Link to="policy">
+              <p>Privacy policy</p>
+            </Link>
+            <Link to="terms and conditions">
+              <p>Terms and conditions</p>
+            </Link>
           </div>
         </div>
       </div>
