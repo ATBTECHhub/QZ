@@ -10,6 +10,9 @@ export default {
         darkPrimary: "#231F20",
         dark: "rgba(35, 31, 32, 0.80)",
         primaryBg: "rgba(16, 69, 115, 0.90)",
+      
+
+
       },
       boxShadow: {
         btnShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.12)",
@@ -17,6 +20,7 @@ export default {
       },
       fontFamily: {
         pop: '"Poppins", sans-serif',
+        fustat: '"Fustat", system-ui;',
       },
       backgroundImage: {
         footerBg: "url('../src/assets/footerBg.svg')",

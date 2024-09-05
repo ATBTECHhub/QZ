@@ -8,7 +8,7 @@ const Navbar = () => {
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        <ul className="gap-12 hidden lg:flex text-base font-medium">
+        <ul className="gap-12 hidden lg:flex text-base font-medium text-black">
           <li className="">
             <NavLink to="/">Home </NavLink>
           </li>
