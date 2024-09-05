@@ -35,11 +35,8 @@ const Navbar = () => {
             <NavLink to="/contact-us">Contact us</NavLink>
           </li>
         </ul>
-        <Link>
-          <button
-            to="/"
-            className="px-[50px] bg-secondary rounded-[30px] py-[10px] text-base font-medium shadow-btnShadow hidden lg:block"
-          >
+        <Link to="/login">
+          <button className="px-[50px] bg-secondary rounded-[30px] py-[10px] text-base font-medium shadow-btnShadow hidden lg:block">
             Log in
           </button>
         </Link>

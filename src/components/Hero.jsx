@@ -31,11 +31,9 @@ const Hero = () => {
                     Our platform simplifies exam creation, management and
                     student assessment.
                   </p>
-                  <Link>
-                    <button
-                      to="/"
-                      className="w-[212px] mb-8 lg:mb-0 bg-secondary rounded-[30px] py-[10px] text-[24px] font-bold shadow-btnShadow"
-                    >
+
+                  <Link to="/signup">
+                    <button className="w-[212px] mb-8 lg:mb-0 bg-secondary rounded-[30px] py-[10px] text-[24px] font-bold shadow-btnShadow">
                       Get Started
                     </button>
                   </Link>
