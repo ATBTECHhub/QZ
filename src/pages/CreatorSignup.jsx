@@ -1,101 +1,65 @@
 import { Link } from "react-router-dom";
 import signupCreatorImg from "../assets/signupCreatorImg.svg";
 import Navbar from "../components/Navbar";
+import InputField from "../components/InputField";
+import AuthFooter from "../components/AuthFooter";
 const creatorSignup = () => {
   return (
-    <section className="font-fustat">
-      <div>
-        <Navbar />
-      </div>
-      <div className=" bg-light  gap-1 pt-32 container">
-        <div className="grid lg:grid-cols-[30%_30%] justify-center items-center container  ">
-          <img
-            src={signupCreatorImg}
-            alt="signupCreatorImg"
-            className=" items-center hidden lg:block "
-          />
-          <div className="grid items-center justify-center h-[400px] w-[398px] bg-white ">
-            <div className="w-full max-w-md p-4 ">
-              <h2 className="text-2xl font-bold text-center mb-8">
-                Register to Create Assessment
-              </h2>
-              <form className="ml-2 w-[260px] lg:w-[350px]">
-                <div className="flex grid-2 gap-2">
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                      First Name
-                    </label>
-                    <input
-                      className=" border rounded w-full py-2 px-3 bg-light "
-                      placeholder="Enter First Name"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                      Last Name
-                    </label>
-                    <input
-                      className=" border rounded w-full py-2 px-3 bg-light "
-                      placeholder="Enter Last Name"
-                    />
-                  </div>
-                </div>
-                <div className="mb-4">
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    id="email"
-                    type="email"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    className=" border rounded w-full py-2 px-3 bg-light "
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div className="mb-6">
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="password"
-                  >
-                    Password
-                  </label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#FAF7ED] mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                    id="password"
-                    type="password"
-                    placeholder="******************"
-                  />
-                </div>
-                <div className="flex items-center  justify-center container">
-                  <button
-                    className="bg-[#104573] hover:bg-[#0b304f] text-white font-bold py-2 px-[55px] rounded-lg "
-                    type="submit"
-                  >
-                    Register
-                  </button>
-                </div>
-              </form>
+    <>
+      <Navbar />
+      <section className="font-fustat bg-[#FAF7ED99]">
+        <div className="grid lg:grid-cols-[30%_30%] justify-center pt-[180px] pb-[100px]">
+          <div>
+            <img
+              src={signupCreatorImg}
+              alt="smiling lady wearing glasses"
+              className="hidden lg:block w-full h-full object-cover"
+            />
+          </div>
+          <form className="bg-white px-5 sm:px-[58px] lg:px-[30px] xl:px-[58px] pt-[38px] ">
+            <h2 className="text-2xl lg:text-xl font-bold text-center mb-8">
+              Register to Create Assessment
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-[18px] items-start sm:items-center">
+              <InputField
+                label="First Name"
+                name=""
+                type="text"
+                placeholder="Enter First Name"
+              />
+              <InputField
+                label="Last Name"
+                name=""
+                type="text"
+                placeholder="Enter Last Name"
+              />
             </div>
-          </div>
+            <InputField
+              label="Email address"
+              name=""
+              type="email"
+              placeholder="Enter email"
+            />
+            <InputField
+              label="Password"
+              name=""
+              type="password"
+              placeholder="Enter password"
+            />
+            <button className="bg-primary hover:bg-[#0b304f] text-white font-inter text-base w-full py-[18px] font-light rounded-[10px] mb-4">
+              REGISTER
+            </button>
+            <p className="text-base text-[#231F20CC] font-normal mb-[100px] lg:mb-8">
+              Already have an account?{" "}
+              <Link to="/login" className="text-primary font-semibold">
+                Sign in
+              </Link>
+            </p>
+          </form>
         </div>
-
-        <div className="flex text-[13px] lg:gap-[350px] gap-10 mt-16 mb-16 font-fustat max-h-none lg:h-16 container  ">
-          <h6>
-            QZ Platform - Licensed by the National Authority of Technology
-            Development, Nigeria.
-          </h6>
-          <div className="flex gap-4 lg:gap-20">
-            <Link to="policy">
-              <p>Privacy policy</p>
-            </Link>
-            <Link to="terms and conditions">
-              <p>Terms and conditions</p>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+        <AuthFooter />
+      </section>
+    </>
   );
 };
 

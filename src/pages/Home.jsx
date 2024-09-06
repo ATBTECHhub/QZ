@@ -16,13 +16,13 @@ import EditProfile from "./EditProfile";
 const Home = () => {
   return (
     <>
-      {/* <Navbar /> */}
-      <Hero />
-      {/* <Features /> */}
-      {/* <AboutUs /> */}
-      {/* <Testimonial /> */}
-      {/* <Ready /> */}
-      {/* <Footer /> */}
+      <Navbar /> 
+      <Hero /> 
+      <Features /> 
+      <AboutUs /> 
+      <Testimonial /> 
+      <Ready /> 
+      <Footer />
       
 
       <> 
