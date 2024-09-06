@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       colors: {
-
         primary: "#104573",
         secondary: "#F3B855",
         light: "rgba(250, 247, 237, 0.60)",
@@ -18,7 +17,9 @@ export default {
       },
       fontFamily: {
         pop: '"Poppins", sans-serif',
-        fustat: '"Fustat", system-ui;',
+        fustat: '"Fustat", system-ui',
+        rubik: '"Rubik", sans-serif',
+        inter: '"Inter", sans-serif',
       },
       backgroundImage: {
         footerBg: "url('../src/assets/footerBg.svg')",

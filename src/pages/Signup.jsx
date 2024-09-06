@@ -5,67 +5,56 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const Signup = () => {
+  const Test = ({ img, heading, instruction, route, name }) => {
+    return (
+      <section>
+        <h2 className="text-[30px] sm:text-[40px] font-extrabold mt-20 text-darkPrimary">
+          {name}
+        </h2>
+        <div className="flex flex-col lg:flex-row items-start mt-[67px] gap-[79px] lg:items-center">
+          <img src={img} alt="user taking a test" />
+          <div className="flex flex-col gap-[16px]">
+            <h1 className="text-[32px] font-bold text-secondary">{heading}</h1>
+            <p className="text-[22px] sm:text-[32px] text-[#231F20CC]">{instruction}</p>
+            <Link
+              to={route}
+              className="text-base font-inter font-semibold bg-secondary rounded-[10px] text-white text-center w-[224px] py-[10px]"
+            >
+              Register
+            </Link>
+          </div>
+        </div>
+      </section>
+    );
+  };
   return (
-    <section className=" container">
-      <div>
-        <Navbar />
-      </div>
-      <div className="font-rubik container pt-32 lg:pt-32 text-center">
-        <h1 className=" text-4xl font-extrabold mt20 ">Register for free</h1>
-        <p className=" text-4xl font-extrabold text-[#F3B855] mt-16 ">
+    <>
+      <Navbar />
+      <section className="container bg-white pt-[180px] pb-[67px] font-rubik px-10">
+        <h1 className="text-[40px] font-extrabold text-center text-darkPrimary">
+          Register for free
+        </h1>
+        <p className="text-[30px] leading-[47px] sm:text-[40px] font-extrabold text-secondary mt-8 sm:mt-16 text-center">
           Unlock Powerful Features and elevate Your Experience
         </p>
-        <p className=" text-4xl font-extrabold mt-20 text-left "> Test Taker</p>
-      </div>
-      <div className="grid lg:flex container mt-16  ">
-        <img src={signupTaker} alt="signupTaker" className="h-64 w-64" />
-
-        <div className=" ml-20 ">
-          <h1 className="text-3xl font-bold text-[#F3B855]">
-            Ready to ace Your test?
-          </h1>
-          <p className="text-3xl mt-12 mb-10">
-            Click here to sign up if your instructor or administrator has
-            assigned you a test. join us now and start your jurney to success!
-          </p>
-          <Link
-            to="/takersignup"
-            className=" font-inter  bg-[#F3B855] text-center container rounded-[10px] text-black px-8 py-2 mt-36 "
-          >
-            Get Started
-          </Link>
-        </div>
-      </div>
-      <p className=" text-4xl font-extrabold ml-16 mt-20 text-left ">
-        {" "}
-        Test Creator
-      </p>
-
-      <div className="grid lg:flex container mt-16  ">
-        <img src={signupCreator} alt="signupcreator" className="h-64 w-64" />
-
-        <div className=" ml-20  ">
-          <h1 className="text-3xl font-bold text-[#F3B855]">
-            Ready to Transform your assessments?
-          </h1>
-          <p className="text-3xl mt-10 mb-10">
-            click here to join our platform and start creating powerful,
-            effective tests today. Sign up now and elevate your teaching
-            experience!
-          </p>
-          <Link
-            to="/creatorsignup"
-            className="   font-inter  bg-[#F3B855] text-center container rounded-[10px] text-black px-8 py-2 mt-36 "
-          >
-            Get Started
-          </Link>
-        </div>
-      </div>
-
-      <div className="mt-36">
-        <Footer />
-      </div>
-    </section>
+        <Test
+          name="Test Taker"
+          img={signupTaker}
+          route="/test-taker-signup"
+          heading="Ready to ace Your test?"
+          instruction="Click here to sign up if your instructor or administrator has assigned
+          you a test. join us now and start your jurney to success! "
+        />
+        <Test
+          name="Test Creator"
+          img={signupCreator}
+          route="/test-creator-signup"
+          heading="Ready to Transform your assessments?"
+          instruction="click here to join our platform and start creating powerful, effective tests today. Sign up now and elevate your teaching experience!"
+        />
+      </section>
+      <Footer />
+    </>
   );
 };
 

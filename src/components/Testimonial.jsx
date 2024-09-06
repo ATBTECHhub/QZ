@@ -83,7 +83,7 @@ const Testimonial = () => {
   );
 };
 
-export default Testimonials;
+export default Testimonial;
 
 
 
