@@ -15,23 +15,20 @@ const Navbar = () => {
           <img src={logo} alt="logo" />
         </Link>
         <ul className="gap-12 hidden lg:flex text-base font-medium text-black">
-          <li className="">
+          <li>
             <NavLink to="/">Home </NavLink>
           </li>
 
-          <li className="">
+          <li>
             <NavLink to="/features"> Features </NavLink>
           </li>
 
-          <li className="">
-            <NavLink to="/pricing">Pricing </NavLink>
-          </li>
 
-          <li className="">
+          <li>
             <NavLink to="/about-us">About us</NavLink>
           </li>
 
-          <li className="">
+          <li>
             <NavLink to="/contact-us">Contact us</NavLink>
           </li>
         </ul>
