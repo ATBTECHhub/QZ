@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
       {/* <Navbar /> */}
-      {/* <Hero /> */}
+      <Hero />
       {/* <Features /> */}
       {/* <AboutUs /> */}
       {/* <Testimonial /> */}
@@ -29,7 +29,7 @@ const Home = () => {
       {/* <TestTakerLogin/> */}
       {/* <Anonymous/> */}
       {/* <TestSubmitted/> */}
-      <EditProfile/>
+      {/* <EditProfile/> */}
       
       </>
     </>
