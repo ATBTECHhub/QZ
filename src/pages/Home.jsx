@@ -6,10 +6,10 @@ import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer";
 import Ready from "../components/Ready";
 import Testimonial from "../components/Testimonial";
-import TestTakerLogin from "./TestTakerLogin";
-import TestSubmitted from "./TestSubmitted";
-import Anonymous from "./Anonymous";
-import EditProfile from "./EditProfile";
+// import TestTakerLogin from "./TestTakerLogin";
+// import TestSubmitted from "./TestSubmitted";
+// import Anonymous from "./Anonymous";
+// import EditProfile from "./EditProfile";
 
 
 
