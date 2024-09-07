@@ -1,4 +1,3 @@
-
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Features from "../components/Features";
@@ -16,22 +15,13 @@ import Testimonial from "../components/Testimonial";
 const Home = () => {
   return (
     <>
-      <Navbar /> 
-      <Hero /> 
-      <Features /> 
-      <AboutUs /> 
-      <Testimonial /> 
-      <Ready /> 
+      <Navbar />
+      <Hero />
+      <Features />
+      <AboutUs />
+      <Testimonial />
+      <Ready />
       <Footer />
-      
-
-      <> 
-      {/* <TestTakerLogin/> */}
-      {/* <Anonymous/> */}
-      {/* <TestSubmitted/> */}
-      {/* <EditProfile/> */}
-      
-      </>
     </>
   );
 };
