@@ -1,72 +1,89 @@
-import { Link } from "react-router-dom";
+
 import Navbar from "../components/Navbar";
+import AuthFooter from "../components/AuthFooter";
+import InputField from "../components/InputField";
+import { Axios } from "../config";
+import Request from "../lib/requests";
+import { TestTakerLoginSchema } from "../schemas";
+import { useFormik } from "formik";
 
 const TestTakerLogin = () => {
+
+  const initialValues = {
+    email: "",
+    accesscode: "",
+  };
+  const onSubmit = async (payload, actions) => {
+    try {
+      const res = await Axios.post(Request.login, payload);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+    await new Promise(() => setTimeout(resolve, 1000));
+    actions.resetForm();
+  };
+  const {
+    handleChange,
+    values,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+    errors,
+    touched,
+  } = useFormik({
+    initialValues,
+    validationSchema: TestTakerLoginSchema,
+    onSubmit,
+  });
+  const getError = (key) => {
+    return touched[key] && errors[key];
+  };
+
+
   return (
-    <sectio className="font-fustat container ">
+    <>
       <Navbar />
-
-      <div className="grid bg-light items-center justify-center pt-20 ml-20 container ">
-        <div className="wfull max-w-md p-4 bg-white w-[270px] lg:w-[717px] h-[450px] mt-[60px] mb-[60px]">
-          <h1 className="text-[16px] font-bold text-center mb-4 mt-4 ">
-            Login to take Test
-          </h1>
-          <h2 className="text-[20px] font-bold font-bolding text-center mb-10 text-[#104573] ">
-            Use your access code to take your test
-          </h2>
-
-          <form className="">
-            <div className="mb-9">
-              <label className="block text-[#231F20CC] text-sm font-bold mb-2">
-                Access Code
-              </label>
-              <input
-                className=" border rounded w-full py-2 px-3 bg-light"
-                placeholder="Enter Code"
-              />
-            </div>
-
-            <div className="mb-9">
-              <label
-                className="block text-[#231F20CC] text-sm font-bold mb-2"
-                id="email"
-                type="email"
-              >
-                Email address
-              </label>
-              <input
-                className=" border rounded w-full py-2 px-3 bg-light"
-                placeholder="your@email.com"
-              />
-            </div>
-
-            <div className="flex items-center  justify-center container">
-              <button
-                className="bg-[#104573] hover:bg-[#0b3d68] text-white font-bold py-2 px-14 rounded-lg  "
-                type="log in"
-              >
-                Log in
-              </button>
-            </div>
+      <section className="font-fustat bg-light pt-44 ">
+        <div className="grid justify-center pb-24 ">
+          <form
+            className="bg-white px-5 sm:px-[58px] lg:px-[30px] xl:px-[58px] pt-[38px] w-[500px] h-[500px] "
+            onSubmit={handleSubmit}
+          >
+            <h2 className="text-2xl lg:text-xl font-bold text-center mb-8">
+              Login to take Test
+            </h2>
+            <h2 className="text-2xl lg:text-xl font-extrabold text-center justify-center text-primary mb-8">
+              Use your access code to take a test
+            </h2>
+            <InputField
+              label="Access code"
+              name="accesscode"
+              type="code"
+              placeholder="Enter Code"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={getError("accesscode")}
+            />
+            <InputField
+              label="Email address"
+              name="email"
+              type="email"
+              placeholder="Enter email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={getError("email")}
+            />
+            <button className="bg-primary hover:bg-[#0b304f] text-white font-inter text-base w-full py-[18px] font-light rounded-[10px] mb-2 mt-2">
+              Log in
+            </button>
           </form>
         </div>
-      </div>
-      <div className="flex text-[13px] lg:gap-[452px] font-fustat max-h-none lg:h-16 bg-light container ">
-        <h6>
-          QZ Platform - Licensed by the National Authority of Technology
-          Development, Nigeria.
-        </h6>
-        <div className="flex gap-4 lg:gap-20">
-          <Link to="policy">
-            <p>Privacy policy</p>
-          </Link>
-          <Link to="terms and conditions">
-            <p>Terms and conditions</p>
-          </Link>
-        </div>
-      </div>
-    </sectio>
+
+        <AuthFooter />
+      </section>
+    </>
   );
-};
+}
 
 export default TestTakerLogin;
