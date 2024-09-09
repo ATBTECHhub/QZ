@@ -22,10 +22,7 @@ export const LoginSchema = Yup.object().shape({
   password: Yup.string()
     .min(5, "Password must be atleast 5 characters long")
     .required("Required"),
-    role: Yup.string()
-    .role("invalid")
-    .min("")
-    .required("Required")
+    
 });
 
 export const TestTakerLoginSchema = Yup.object().shape({
