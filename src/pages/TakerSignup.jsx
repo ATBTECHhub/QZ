@@ -1,104 +1,120 @@
 import { Link } from "react-router-dom";
 import signupTakerImg from "../assets/signupTakerImg.svg";
 import Navbar from "../components/Navbar";
+import AuthFooter from "../components/AuthFooter";
+import { Axios } from "../config";
+import { TakerSignupSchema } from "../schemas";
+import Request from "../lib/requests";
+import { useFormik } from "formik";
+import InputField from "../components/InputField";
 
 const takerSignup = () => {
+ const initialValues = {
+   firstName: "",
+   lastName: "",
+   email: "",
+   password: "",
+ };
+  const onSubmit = async (payload, actions) => {
+    try {
+      const res = await Axios.post(Request.takerSignup, payload);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+    await new Promise(() => setTimeout(resolve, 1000));
+    actions.resetForm();
+  };
+   const {
+     handleChange,
+     values,
+     handleBlur,
+     handleSubmit,
+     isSubmitting,
+     errors,
+     touched,
+   } = useFormik({
+     initialValues,
+     validationSchema: TakerSignupSchema,
+     onSubmit,
+   });
+   const getError = (key) => {
+     return touched[key] && errors[key];
+   };
   return (
-    <section className="font-fustat">
-      <div>
-        <Navbar />
-      </div>
-      <div className=" bg-[#f2f1ed] pt-24 lg:pt-10 container ">
-        <div className=" grid lg:grid-cols-[30%_30%] container  justify-center items-center mt-2">
-          <img
-            src={signupTakerImg}
-            alt="signupTakerImg"
-            className=" items-center hidden lg:block h-[597px]"
-          />
+    <>
+      <Navbar />
+      <section className="font-fustat bg-light">
+        <div className="grid lg:grid-cols-[30%_30%] justify-center pt-[180px] pb-[100px]">
+          <div>
+            <img
+              src={signupTakerImg}
+              alt="signupTakerImg"
+              className="hidden lg:block w-full h-full object-cover"
+            />
+          </div>
 
-          <div className="grid items-center justify-center h-[420px] w-[277px] lg:w-[400px] bg-white">
-            <div className="w-full max-w-md  ">
-              <h2 className="text-2xl font-bold text-center mb-2">
-                Register to take assessment
-              </h2>
-              <form className="ml-2 w-[260px] lg:w-[350px]">
-                <div className="flex grid-2 gap-2 ">
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                      First Name
-                    </label>
-                    <input
-                      className=" border rounded w-full py-2 px-3 bg-light"
-                      placeholder="Enter First Name"
-                    />
-                  </div>
-                  <div className="mb-2">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                      Last Name
-                    </label>
-                    <input
-                      className=" border rounded w-full py-2 px-3 bg-light"
-                      placeholder="Enter Last Name"
-                    />
-                  </div>
-                </div>
-                <div className="mb-2">
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    id="email"
-                    type="email"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    className=" border rounded w-full py-2 px-3 bg-light"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div className="mb-2">
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="password"
-                  >
-                    Password
-                  </label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-light mb-3 "
-                    id="password"
-                    type="password"
-                    placeholder="******************"
-                  />
-                </div>
-
-                <div className="flex items-center  justify-center ">
-                  <button
-                    className="bg-[#104573] hover:bg-[#0b304f] text-white font-bold py-2 px-14 rounded-lg"
-                    type="submit"
-                  >
-                    Register
-                  </button>
-                </div>
-              </form>
+          <form
+            className="bg-white px-5 sm:px-[58px] lg:px-[30px] xl:px-[58px] pt-[38px]"
+            onSubmit={handleSubmit}
+          >
+            <h2 className="text-2xl lg:text-xl font-bold text-center mb-8">
+              Register to Take Assessment
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-[18px] items-start sm:items-center">
+              <InputField
+                label="First Name"
+                name="firstName"
+                type="text"
+                placeholder="Enter First Name"
+                value={values.firstName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={getError("firstName")}
+              />
+              <InputField
+                label="Last Name"
+                name="lastName"
+                type="text"
+                placeholder="Enter Last Name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={getError("lastName")}
+              />
             </div>
-          </div>
+            <InputField
+              label="Email address"
+              name="email"
+              type="email"
+              placeholder="Enter email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={getError("email")}
+            />
+            <InputField
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Enter password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={getError("password")}
+            />
+            <button className="bg-primary hover:bg-[#0b304f] text-white font-inter text-base w-full py-[18px] font-light rounded-[10px] mb-4">
+              REGISTER
+            </button>
+            <p className="text-base text-[#231F20CC] font-normal mb-[100px] lg:mb-8">
+              Already have an account?{" "}
+              <Link to="/login" className="text-primary font-semibold">
+                Sign in
+              </Link>
+            </p>
+          </form>
         </div>
 
-        <div className="flex text-[13px] lg:gap-[452px] gap-10 mt-3 mb-1 max-h-none lg:h-16 ">
-          <h6>
-            QZ Platform - Licensed by the National Authority of Technology
-            Development, Nigeria.
-          </h6>
-          <div className="flex gap-4 lg:gap-20">
-            <Link to="policy">
-              <p>Privacy policy</p>
-            </Link>
-            <Link to="terms and conditions">
-              <p>Terms and conditions</p>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+        <AuthFooter />
+      </section>
+    </>
   );
 };
 
