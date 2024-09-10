@@ -1,5 +1,8 @@
+import Sidenav from "../Sidenav";
+
 const InstructorBase = () => {
-  return <div>InstructorBase</div>;
+  return <>
+  </>
 };
 
 export default InstructorBase;

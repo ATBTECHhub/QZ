@@ -1,5 +1,5 @@
 const Request = {
-  takerSignup: "/taker-signup",
+  takerSignup: "/auths/register",
   takerLogin: "/taker-login",
   creatorSignup: "/creator-signup",
   creatorLogin: "/creator-login",
