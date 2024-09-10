@@ -10,10 +10,10 @@ import InputField from "../components/InputField";
 
 const takerSignup = () => {
  const initialValues = {
-   firstName: "",
-   lastName: "",
+   name: "",
    email: "",
    password: "",
+   role: "testTaker",
  };
   const onSubmit = async (payload, actions) => {
     try {
@@ -61,18 +61,18 @@ const takerSignup = () => {
             <h2 className="text-2xl lg:text-xl font-bold text-center mb-8">
               Register to Take Assessment
             </h2>
-            <div className="flex flex-col sm:flex-row gap-[18px] items-start sm:items-center">
+            {/* <div className="flex flex-col sm:flex-row gap-[18px] items-start sm:items-center"> */}
               <InputField
-                label="First Name"
-                name="firstName"
+                label="Name"
+                name="name"
                 type="text"
-                placeholder="Enter First Name"
-                value={values.firstName}
+                placeholder="Enter Name"
+                value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={getError("firstName")}
+                error={getError("name")}
               />
-              <InputField
+              {/* <InputField
                 label="Last Name"
                 name="lastName"
                 type="text"
@@ -80,8 +80,8 @@ const takerSignup = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={getError("lastName")}
-              />
-            </div>
+              /> */}
+            {/* </div> */}
             <InputField
               label="Email address"
               name="email"
