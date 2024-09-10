@@ -46,7 +46,11 @@ const Login = () => {
       <section className="font-fustat bg-light">
         <div className="grid lg:grid-cols-[30%_30%] justify-center pt-[180px] pb-[100px]">
           <div>
-            <img src={loginImg} alt="loginImg" className="hidden lg:block" />
+            <img
+              src={loginImg}
+              alt="loginImg"
+              className="hidden lg:block w-full h-full object-cover"
+            />
           </div>
           <form
             className="bg-white px-5 sm:px-[58px] lg:px-[30px] xl:px-[58px] pt-[38px]"
@@ -82,7 +86,7 @@ const Login = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={getError("role")}
-                className=" appearance-none border rounded w-full py-2 px-3 "
+                className="   border rounded-[10px] w-full py-3 px-[10px] border-[#231F204F] outline-none  "
               >
                 <option value=""></option>
                 <option value="test-taker">Test-Taker</option>
