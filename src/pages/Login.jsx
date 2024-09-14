@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/loginImg.svg";
 import Navbar from "../components/Navbar";
 import InputField from "../components/InputField";
@@ -7,39 +7,57 @@ import { useFormik } from "formik";
 import { LoginSchema } from "../schemas";
 import Request from "../lib/requests";
 import AuthFooter from "../components/AuthFooter";
+import useAuthStore from "../store/authStore";
+import { toast } from "react-toastify";
 
 const Login = () => {
-   const initialValues = {
-     email: "",
-     password: "",
-     role: "",
-   };
-   const onSubmit = async (payload, actions) => {
-     try {
-       const res = await Axios.post(Request.login, payload);
-       console.log(res);
-     } catch (error) {
-       console.log(error);
-     }
-     await new Promise(() => setTimeout(resolve, 1000));
-     actions.resetForm();
-   };
-   const {
-     handleChange,
-     values,
-     handleBlur,
-     handleSubmit,
-     isSubmitting,
-     errors,
-     touched,
-   } = useFormik({
-     initialValues,
-     validationSchema: LoginSchema,
-     onSubmit,
-   });
-   const getError = (key) => {
-     return touched[key] && errors[key];
-   };
+  const navigate = useNavigate();
+  const setToken = useAuthStore((state) => state.setToken);
+  const user = useAuthStore((state) => state.user);
+  const initialValues = {
+    email: "",
+    password: "",
+    role: "",
+    keepMeSignedIn: false,
+  };
+  const onSubmit = async (payload, actions) => {
+    try {
+      const res = await Axios.post(Request.login, payload);
+      console.log(res);
+      if (res.data.token) {
+        setToken(res.data.token);
+        // After setting the token, check the user's role for navigation
+        if (user?.role === "testTaker") {
+          navigate("/student-dashboard");
+        } else if (user?.role === "testCreator") {
+          navigate("/instructor-dashboard");
+        }
+      }
+      else{
+        toast.error(res.message);
+      }
+    } catch (error) {
+     toast.error(error?.response.data.message);
+    }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    actions.resetForm();
+  };
+  const {
+    handleChange,
+    values,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+    errors,
+    touched,
+  } = useFormik({
+    initialValues,
+    validationSchema: LoginSchema,
+    onSubmit,
+  });
+  const getError = (key) => {
+    return touched[key] && errors[key];
+  };
   return (
     <>
       <Navbar />
@@ -65,6 +83,7 @@ const Login = () => {
               name="email"
               type="email"
               placeholder="Enter email"
+              value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
               error={getError("email")}
@@ -74,33 +93,78 @@ const Login = () => {
               name="password"
               type="password"
               placeholder="Enter password"
+              value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
               error={getError("password")}
             />
-            <div className="mb-4 grid ">
-              <label className="block  text-sm font-bold mb-2">Role</label>
+            <div className="flex justify-between mb-4">
+              <div>
+                <input
+                  id="remember"
+                  type="checkbox"
+                  name="keepMeSignedIn"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  checked={values.keepMeSignedIn}
+                />
+                <label
+                  htmlFor="remember"
+                  className="text-base text-[#231F20CC] ml-1 cursor-pointer"
+                >
+                  Remember me
+                </label>
+              </div>
+              <Link
+                to="/forgot-password"
+                className="text-primary font-semibold"
+              >
+                Forgot Password
+              </Link>
+            </div>
+            <div className="flex flex-col mb-4 w-full">
+              <label
+                htmlFor="role"
+                className="text-base font-extrabold text-[#231F20CC]"
+              >
+                Role
+              </label>
               <select
-                id="list"
-                name="list"
+                id="role"
+                name="role"
+                value={values.role}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={getError("role")}
-                className="   border rounded-[10px] w-full py-3 px-[10px] border-[#231F204F] outline-none  "
+                className={`border rounded-[10px] w-full py-3 px-[10px] border-[#231F204F] outline-none ${
+                  getError("role") ? "border border-red-500" : ""
+                }`}
               >
-                <option value=""></option>
-                <option value="test-taker">Test-Taker</option>
-                <option value="test-creatoe">Test-Creator</option>
+                <option value="">Select</option>
+                <option value="testTaker">Test-Taker</option>
+                <option value="testCreator">Test-Creator</option>
               </select>
+              {getError("role") && (
+                <p className="text-red-500 text-sm font-medium">
+                  {getError("role")}
+                </p>
+              )}
             </div>
 
-            <button className="bg-primary hover:bg-[#0b304f] text-white font-inter text-base w-full py-[18px] font-light rounded-[10px] mb-4">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="disabled:opacity-75 disabled:cursor-not-allowed bg-primary hover:bg-[#0b304f] text-white font-inter text-base w-full py-[18px] font-light rounded-[10px] mb-4"
+            >
               LOGIN
             </button>
 
-            <Link to="/forget-password" className="text-primary font-semibold">
-              Forgot Password?
-            </Link>
+            <p className="text-base text-[#231F20CC] font-normal mb-[100px] lg:mb-8">
+              Don't have an account?{" "}
+              <Link to="/signup" className="text-primary font-semibold">
+                Sign up
+              </Link>
+            </p>
           </form>
         </div>
         <AuthFooter />

@@ -5,10 +5,8 @@ import Navbar from "../components/Navbar";
 const ForgetPassword = () => {
   return (
     <section className=" font-fustat bg-[#f2f1ed]">
-      <div>
-        <Navbar />
-      </div>
-      <div className=" mt- gap-1  container">
+      <Navbar />
+      <div className=" mt- gap-1 container">
         <div className="grid lg:grid-cols-[40%_40%] container justify-center items-center  m-10 ">
           <img
             src={padlock}
@@ -31,7 +29,7 @@ const ForgetPassword = () => {
                     placeholder="your@email.com"
                   />
                 </div>
-                <div className="flex items-center  justify-center mt-8">
+                <div className="flex items-center justify-center mt-8">
                   <button
                     className="bg-[#104573] hover:bg-[#0b304f] text-white font-bold py-2 px-4 rounded "
                     type="submit"

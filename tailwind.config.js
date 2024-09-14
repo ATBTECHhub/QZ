@@ -17,6 +17,8 @@ export default {
       boxShadow: {
         btnShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.12)",
         cardShadow: " 0px 4px 30px 0px rgba(0, 0, 0, 0.10)",
+        formShadow: "0px 4px 28.3px 3px #00000012",
+
       },
       fontFamily: {
         pop: '"Poppins", sans-serif',
