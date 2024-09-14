@@ -1,25 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signupCreatorImg from "../assets/signupCreatorImg.svg";
 import Navbar from "../components/Navbar";
 import InputField from "../components/InputField";
 import AuthFooter from "../components/AuthFooter";
 import { Axios } from "../config";
 import Request from "../lib/requests";
-import { CreatorSignupSchema } from "../schemas";
 import { useFormik } from "formik";
+import { SignupSchema } from "../schemas";
+import { toast } from "react-toastify";
 const creatorSignup = () => {
+   const navigate = useNavigate();
   const initialValues = {
     name: "",
     email: "",
     password: "",
-    role: "testcreator",
+    role: "testCreator",
   };
   const onSubmit = async (payload, actions) => {
     try {
-      const res = await Axios.post(Request.creatorSignup, payload);
+      const res = await Axios.post(Request.signup, payload);
       console.log(res);
+      if (res.data.message === "User registered successfully") {
+        toast.success("Account created");
+        navigate("/login");
+      }
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
+   
     }
     await new Promise(() => setTimeout(resolve, 1000));
     actions.resetForm();
@@ -34,7 +41,7 @@ const creatorSignup = () => {
     touched,
   } = useFormik({
     initialValues,
-    validationSchema: CreatorSignupSchema,
+    validationSchema: SignupSchema,
     onSubmit,
   });
   const getError = (key) => {
@@ -60,17 +67,17 @@ const creatorSignup = () => {
               Register to Create Assessment
             </h2>
             {/* <div className="flex flex-col sm:flex-row gap-[18px] items-start sm:items-center"> */}
-              <InputField
-                label="Name"
-                name="name"
-                type="text"
-                placeholder="Enter Name"
-                value={values.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={getError("name")}
-              />
-              {/* <InputField
+            <InputField
+              label="Name"
+              name="name"
+              type="text"
+              placeholder="Enter Name"
+              value={values.name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={getError("name")}
+            />
+            {/* <InputField
                 label="Last Name"
                 name="lastName"
                 type="text"
@@ -85,6 +92,7 @@ const creatorSignup = () => {
               name="email"
               type="email"
               placeholder="Enter email"
+              value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
               error={getError("email")}
@@ -94,11 +102,16 @@ const creatorSignup = () => {
               name="password"
               type="password"
               placeholder="Enter password"
+              value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
               error={getError("password")}
             />
-            <button className="bg-primary hover:bg-[#0b304f] text-white font-inter text-base w-full py-[18px] font-light rounded-[10px] mb-4">
+            <button
+              disabled={isSubmitting}
+              type="submit"
+              className="disabled:opacity-75 disabled:cursor-not-allowed bg-primary hover:bg-[#0b304f] text-white font-inter text-base w-full py-[18px] font-light rounded-[10px] mb-4"
+            >
               REGISTER
             </button>
             <p className="text-base text-[#231F20CC] font-normal mb-[100px] lg:mb-8">
