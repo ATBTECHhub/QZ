@@ -13,7 +13,7 @@ const Sidenav = () => {
     setOpenSection(openSection === index ? null : index);
   };
   return (
-    <div className="bg-primary w-[350px] hidden lg:flex flex-col px-8 py-9 border border-[#808080]">
+    <div className="bg-primary !w-[350px] hidden lg:flex flex-col px-8 py-9 border border-[#808080]">
       <Link to="/instructor-dashboard" className="mb-4">
         <img src={logo} alt="logo" />
       </Link>
