@@ -9,6 +9,7 @@ import TestTakerLogin from "./TestTakerLogin";
 import TestSubmitted from "./TestSubmitted";
 import Anonymous from "./Anonymous";
 import EditProfile from "./EditProfile";
+import Waitlist from "./Waitlist";
 
 
 
@@ -22,6 +23,7 @@ const Home = () => {
       <Testimonial />
       <Ready />
       <Footer />
+      <Waitlist/>
 
       {/* <TestTakerLogin /> */}
       {/* <TestSubmitted /> */}

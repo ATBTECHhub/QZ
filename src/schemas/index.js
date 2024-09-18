@@ -29,3 +29,7 @@ export const TestTakerLoginSchema = Yup.object().shape({
   .min(5, "Access code must be atleast 5 characters long")
   .required("Required"),
 });
+
+export const WaitlistSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+});
