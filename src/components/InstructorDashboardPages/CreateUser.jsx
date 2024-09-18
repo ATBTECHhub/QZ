@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { CreateUserSchema } from "../../schemas";
 import { useFormik } from "formik";
 import Request from "../../lib/requests";
+import TextField from "../TextField";
+import { Axios } from "../../config";
+import { toast } from "react-toastify";
 
 const CreateUser = () => {
   const [activeTab, setActiveTab] = useState("Create User");
@@ -18,18 +21,17 @@ const CreateUser = () => {
     }
   };
   const initialValues = {
-    fname: "",
-    lname: "",
+    name: "",
+    // lname: "",
     email: "",
   };
   const onSubmit = async (payload, actions) => {
     try {
       const res = await Axios.post(Request.createUser, payload);
       console.log(res);
-      // if (res.data.message === "User registered successfully") {
-      //   toast.success("Account created");
-      //   navigate("/login");
-      // }
+      if(res.data.message === "User Successfully Created"){
+        toast(res.data.message)
+      }
     } catch (error) {
       toast.error(error.response.data.message);
       console.log(error);
@@ -53,40 +55,7 @@ const CreateUser = () => {
   const getError = (key) => {
     return touched[key] && errors[key];
   };
-  const TextField = ({
-    label,
-    name,
-    type,
-    placeholder,
-    value,
-    error,
-    onChange,
-    onBlur,
-  }) => {
-    return (
-      <div className="bg-white gap-[9px] flex flex-col pl-[23px] pr-[51px] pb-[33px] pt-4 rounded-xl shadow-formShadow mb-[64px]">
-        <label
-          htmlFor={name}
-          className="text-base font-fustat leading-6 text- darkPrimary font-extrabold"
-        >
-          {label}
-        </label>
-        <input
-          type={type}
-          placeholder={placeholder}
-          name={name}
-          id={name}
-          className={`border border-[#E6E6E9] px-5 py-3 rounded-[8px] outline-none w-[636px] ${
-            error ? "border border-red-500" : ""
-          }`}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-        />
-        {error && <p className="text-red-500 text-sm font-medium">{error}</p>}
-      </div>
-    );
-  };
+
 
   return (
     <div className="pl-[54px] py-[59px]">
@@ -112,16 +81,16 @@ const CreateUser = () => {
           <div>
             <form onSubmit={handleSubmit}>
               <TextField
-                label="First Name"
-                name="fname"
+                label="Full Name"
+                name="name"
                 type="text"
-                placeholder="Enter First Name"
-                value={values.fname}
+                placeholder="Enter Full Name"
+                value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={getError("fname")}
+                error={getError("name")}
               />
-              <TextField
+              {/* <TextField
                 label="Last Name"
                 name="lname"
                 type="text"
@@ -130,7 +99,7 @@ const CreateUser = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={getError("lname")}
-              />
+              /> */}
               <TextField
                 label="Email Address"
                 name="email"

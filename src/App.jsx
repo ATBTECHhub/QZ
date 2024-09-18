@@ -9,7 +9,7 @@ import InstructorDashboard from "./pages/InstructorDashboard";
 import CreateUser from "./components/InstructorDashboardPages/CreateUser";
 import InstructorBase from "./components/InstructorDashboardPages/InstructorBase";
 import ManageUser from "./components/InstructorDashboardPages/ManageUser";
-import ManageGroup from "./components/InstructorDashboardPages/ManageGroup";
+import CreateGroup from "./components/InstructorDashboardPages/CreateGroup";
 import CreateTest from "./components/InstructorDashboardPages/CreateTest";
 import ManageTest from "./components/InstructorDashboardPages/ManageTest";
 import QuestionBank from "./components/InstructorDashboardPages/QuestionBank";
@@ -18,9 +18,9 @@ import MonitorTest from "./components/InstructorDashboardPages/MonitorTest";
 import Analytics from "./components/InstructorDashboardPages/Analytics";
 import Report from "./components/InstructorDashboardPages/Report";
 import Results from "./components/InstructorDashboardPages/Results";
+import ManageGroup from "./components/InstructorDashboardPages/ManageGroup";
 
 function App() {
-
   return (
     <>
       <Routes>
@@ -30,56 +30,28 @@ function App() {
         <Route path="/test-taker-signup" element={<TakerSignup />} />
         <Route path="/test-creator-signup" element={<CreatorSignup />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
-        <Route element={<InstructorDashboard />}>
-          <Route path="/instructor-dashboard" element={<InstructorBase />} />
-          <Route
-            path="/instructor-dashboard/create-user"
-            element={<CreateUser />}
-          />
-          <Route
-            path="/instructor-dashboard/manage-user"
-            element={<ManageUser />}
-          />
-          <Route
-            path="/instructor-dashboard/manage-groups"
-            element={<ManageGroup />}
-          />
-          <Route
-            path="/instructor-dashboard/create-test"
-            element={<CreateTest />}
-          />
-          <Route
-            path="/instructor-dashboard/manage-test"
-            element={<ManageTest />}
-          />
-          <Route
-            path="/instructor-dashboard/questions"
-            element={<QuestionBank />}
-          />
-          <Route
-            path="/instructor-dashboard/administer-test"
-            element={<AdministerTest />}
-          />
-          <Route
-            path="/instructor-dashboard/monitor-test"
-            element={<MonitorTest />}
-          />
-          <Route
-            path="/instructor-dashboard/results"
-            element={<Results />}
-          />
-          <Route
-            path="/instructor-dashboard/reports"
-            element={<Report />}
-          />
-          <Route
-            path="/instructor-dashboard/analytics"
-            element={<Analytics />}
-          />
+        <Route path="/instructor-dashboard" element={<InstructorDashboard />}>
+          <Route index element={<InstructorBase />} />
+          <Route path="create-user" element={<CreateUser />} />
+          <Route path="manage-user" element={<ManageUser />} />
+
+          {/* Nestedroutes under manage group page */}
+          <Route path="groups">
+            <Route index element={<CreateGroup />} />
+            <Route path="manage-groups" element={<ManageGroup />} />
+          </Route>
+          <Route path="create-test" element={<CreateTest />} />
+          <Route path="manage-test" element={<ManageTest />} />
+          <Route path="questions" element={<QuestionBank />} />
+          <Route path="administer-test" element={<AdministerTest />} />
+          <Route path="monitor-test" element={<MonitorTest />} />
+          <Route path="results" element={<Results />} />
+          <Route path="reports" element={<Report />} />
+          <Route path="analytics" element={<Analytics />} />
         </Route>
       </Routes>
     </>
   );
 }
 
-export default App
+export default App;

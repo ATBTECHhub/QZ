@@ -13,7 +13,7 @@ const Sidenav = () => {
     setOpenSection(openSection === index ? null : index);
   };
   return (
-    <div className="bg-primary w-[350px] hidden lg:flex flex-col px-8 py-9 border border-[#808080]">
+    <div className="bg-primary !w-[350px] hidden lg:flex flex-col px-8 py-9 border border-[#808080]">
       <Link to="/instructor-dashboard" className="mb-4">
         <img src={logo} alt="logo" />
       </Link>
@@ -59,7 +59,7 @@ const Sidenav = () => {
                     <Link
                       to={sublink.to}
                       className={`text-white py-[10px] pl-[10px] pr-8 rounded-[10px] ${
-                        location.pathname === sublink.to ? "bg-[#346580B2]" : ""
+                        location.pathname.startsWith(sublink.to) ? "bg-[#346580B2]" : ""
                       }`}
                     >
                       {sublink.text}

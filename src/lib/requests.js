@@ -4,5 +4,7 @@ const Request = {
 
   // instructor dashboard routes
   createUser: "/users",
+  createGroup: "/groups",
+  createTest: "/test-create",
 };
 export default Request;
