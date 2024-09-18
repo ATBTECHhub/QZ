@@ -37,60 +37,6 @@ const Waitlist = () => {
     return touched[key] && errors[key];
   };
   return (
-    // <section className="bg-waitlistBg  bg-no-repeat justify-center items-center container">
-    //   <div className="waitlistcontent text-center justify-between items- ">
-    //     <img src={waitlistIcon} alt="waitlistIcon" className="pt-10  " />
-    //     <p className="text-primary text-[40px] pb-14 font-extrabold ">
-    //       Coming Soon
-    //     </p>
-    //     <div className="text-primary text-[60px]">
-    //       <Timer duration={15 * 24 * 60 * 60 * 1000} />
-    //     </div>
-    //     <p className="text-white text[24px] font-bold py-14">
-    //       Just 15 days remaining for the reveal of our new product
-    //     </p>
-    //     <form className="grid justify-center items-center lg:flex lg:w-[669px] gap-6 h-16 pb-44">
-    //       <InputField
-    //         className="w-96 h-16"
-    //         name="email"
-    //         type="email"
-    //         placeholder="Enter your email"
-    //         onChange={handleChange}
-    //         onBlur={handleBlur}
-    //         error={getError("email")}
-    //       />
-    //       <button className="bg-primary hover:bg-[#0b304f] text-white text-[24px] px-2 py-2 font-light rounded-[10px] h-12 w-44 mb-4">
-    //         Notify Us
-    //       </button>
-    //     </form>
-    //   </div>
-    // </section>
-    // <section className="h-screen w-full bg-waitlistBg bg-cover bg-center grid items-center justify-center">
-    //   <div className="text-center">
-    //     <img src={waitlistIcon} alt="waitlistIcon" className="mb-5" />
-    //     <p className="text-primary text-5xl font-extrabold mb-5">Coming Soon</p>
-    //   </div>
-    //   <div className="text-primary text-7xl mb-5">
-    //     <Timer duration={15 * 24 * 60 * 60 * 1000} />
-    //   </div>
-    //   <p className="text-white text-2xl font-bold mb-5">
-    //     Just 15 days remaining for the reveal of our new product
-    //   </p>
-    //   <form className="flex flex-col items-center gap-5 w-full max-w-md">
-    //     <InputField
-    //       className="w-full"
-    //       name="email"
-    //       type="email"
-    //       placeholder="Enter your email"
-    //       onChange={handleChange}
-    //       onBlur={handleBlur}
-    //       error={getError("email")}
-    //     />
-    //     <button className="bg-primary hover:bg-[#0b304f] text-white text-2xl px-5 py-3 font-light rounded-lg">
-    //       Notify Us
-    //     </button>
-    //   </form>
-    // </section>
     <section className="h-screen w-full bg-waitlistBg bg-cover bg-center flex items-center justify-center flex-col">
       <div className="flex flex-col items-center gap-5 text-center">
         <img src={waitlistIcon} alt="waitlistIcon" className="mb-5" />
