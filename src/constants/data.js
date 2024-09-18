@@ -125,7 +125,7 @@ export const instructorDashboard = [
       { text: "Manage User", to: "/instructor-dashboard/manage-user" },
       {
         text: "Create and Manage Groups",
-        to: "/instructor-dashboard/manage-groups",
+        to: "/instructor-dashboard/groups",
       },
     ],
   },
@@ -244,3 +244,28 @@ export const creatorQuickLinks = [
     link: "/ongoing-tests",
   },
 ];
+
+export const creatorTracker = [
+  {
+    id: 1,
+    name: "James Jacob",
+    test: "Basic Computing",
+    date: "2 Aug, 2024",
+    status: "Completed",
+  },
+  {
+    id: 2,
+    name: "Sarah Doe",
+    test: "Advanced Math",
+    date: "5 Aug, 2024",
+    status: "Pending",
+  },
+  {
+    id: 3,
+    name: "Michael Smith",
+    test: "Physics Basics",
+    date: "10 Aug, 2024",
+    status: "Missed",
+  },
+];
+

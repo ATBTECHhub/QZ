@@ -33,8 +33,38 @@ export const TestTakerLoginSchema = Yup.object().shape({
 });
 
 export const CreateUserSchema = Yup.object().shape({
-  fname: Yup.string().required("Required"),
-  lname: Yup.string().required("Required"),
+  name: Yup.string().required("Required"),
+  // lname: Yup.string().required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
 
 });
+
+
+export const ManageGroupSchema = Yup.object().shape({
+  groupName: Yup.string().required("Required"),
+  groupDescription: Yup.string().required("Required"),
+  memberEmails: Yup.string()
+    .required("Required")
+    .test(
+      "is-valid-emails",
+      "Please enter valid email addresses separated by commas",
+      (value) => {
+        if (!value) return false;
+        const emails = value.split(",").map((email) => email.trim());
+        // Check if each email is valid and if there are at least 2 emails
+        return (
+          emails.length >= 2 &&
+          emails.every((email) => Yup.string().email().isValidSync(email))
+        );
+      }
+    ),
+});
+
+
+export const CreateTestSchema = Yup.object().shape({
+  test: Yup.string().required("Required"),
+  description: Yup.string().required("Required"),
+  category: Yup.string().required("Required"),
+  instruction: Yup.string().required("Required"),
+});
+

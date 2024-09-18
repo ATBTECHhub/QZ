@@ -59,7 +59,7 @@ const Sidenav = () => {
                     <Link
                       to={sublink.to}
                       className={`text-white py-[10px] pl-[10px] pr-8 rounded-[10px] ${
-                        location.pathname === sublink.to ? "bg-[#346580B2]" : ""
+                        location.pathname.startsWith(sublink.to) ? "bg-[#346580B2]" : ""
                       }`}
                     >
                       {sublink.text}

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Widget from "../Widget";
 import {
   creatorQuickLinks,
+  creatorTracker,
   creatorUpcomingTests,
   recentlyCreatedTests,
   tests,
@@ -40,19 +41,32 @@ const InstructorBase = () => {
     },
   };
 
-  return (
-    <section className="pl-[54px] py-[59px] pr-[100px]">
-      {/* <p>{user}</p> */}
-      <h1 className="text-xl test-darkPrimary">Welcome Back, Adejare</h1>
-      <div className="flex items-center bg-white py-2 px-5 rounded-[23px] gap-2">
-        <IoIosSearch />
-        <input type="search" className="outline-none bg-transparent" />
-      </div>
+  // Function to set the color based on the status
+  const getStatusColor = (status) => {
+    if (status === "Completed") {
+      return "text-success";
+    } else if (status === "Pending") {
+      return "text-secondary";
+    } else if (status === "Missed") {
+      return "text-red-500";
+    } else {
+      return "";
+    }
+  };
 
+  return (
+    <section className="pl-[54px] py-[59px] pr-[70px]">
+      <div className="flex justify-between">
+        <h1 className="text-xl test-darkPrimary">Welcome Back, Adejare</h1>
+        <div className="flex items-center bg-white py-2 px-5 rounded-[23px] gap-2">
+          <IoIosSearch />
+          <input type="search" className="outline-none bg-transparent" />
+        </div>
+      </div>
       <div className="pb-[30px] pt-4 flex gap-[47px] items-center">
         <p className="flex items-center gap-[10px]">
           <Link
-            to=""
+            to="/instructor-dashboard/create-user"
             className="w-[42px] h-[42px] rounded-full text-white bg-primary items-center justify-center flex"
           >
             <FaPlus />
@@ -61,7 +75,7 @@ const InstructorBase = () => {
         </p>
         <p className="flex items-center gap-[10px]">
           <Link
-            to=""
+            to="/instructor-dashboard/create-test"
             className="w-[42px] h-[42px] rounded-full text-white bg-secondary items-center justify-center flex"
           >
             <FaPlus />
@@ -72,7 +86,7 @@ const InstructorBase = () => {
       <h2 className="text-xl font-extrabold leading-7">Summary Widget</h2>
       <Widget />
       <div className="py-4 grid lg:grid-cols-[60%_40%] gap-5">
-        <div className="py-6 pl-6 pr-16 w-[643x] bg-white border rounded-lg shadow-md text-xs">
+        <div className="py-6 pl-6 pr-16 bg-white border rounded-[12px] text-xs">
           <div className="flex justify-between items-center pb-4 border-b">
             <h2 className="text-base font-extrabold">Test Created</h2>
             <button className="text-primary font-extrabold border border-primary py-1 px-3 rounded-lg hover:bg-blue-100">
@@ -107,7 +121,7 @@ const InstructorBase = () => {
             </tbody>
           </table>
         </div>
-        <div className="p-6 bg-white border rounded-lg shadow-md w-96">
+        <div className="p-6 bg-white border rounded-[12px] shadow-tableShadow w-96">
           <h2 className="text-base font-extrabold mb-6 leading-[22px]">
             Summary Chart
           </h2>
@@ -135,16 +149,16 @@ const InstructorBase = () => {
           </div>
         </div>
       </div>
-      <section className="grid lg:grid-cols-[60%_40%] gap-6">
-        <div className="grid gap-8">
+      <section className="grid lg:grid-cols-[60%_40%] gap-6 rounded-[12px] text-xs">
+        <div className="grid gap-5">
           {/* Recently Created Tests */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-lg font-semibold mb-4">
+          <div className="bg-white rounded-[12px] p-6 shadow-tableShadow">
+            <h2 className="text-base font-extrabold border-b leading-[22px] mb-2">
               Recently Created Tests
             </h2>
-            <table className="w-full table-auto text-left">
+            <table className="w-full">
               <thead>
-                <tr>
+                <tr className="text-left border-b text-[#00000099]">
                   <th>No</th>
                   <th>Exam Title</th>
                   <th>Date created</th>
@@ -154,17 +168,17 @@ const InstructorBase = () => {
               </thead>
               <tbody>
                 {recentlyCreatedTests.map((test) => (
-                  <tr key={test.id}>
-                    <td>{test.id}</td>
-                    <td>{test.title}</td>
-                    <td>{test.dateCreated}</td>
-                    <td>
-                      <button className="text-blue-500">
+                  <tr key={test.id} className="border-b">
+                    <td className="py-2">{test.id}</td>
+                    <td className="py-2">{test.title}</td>
+                    <td className="py-2">{test.dateCreated}</td>
+                    <td className="py-2">
+                      <button className="text-primary">
                         <FaRegEdit />
                       </button>
                     </td>
-                    <td>
-                      <button className="text-red-500">
+                    <td className="py-2">
+                      <button className="text-primary">
                         <RiDeleteBin5Fill />
                       </button>
                     </td>
@@ -175,11 +189,13 @@ const InstructorBase = () => {
           </div>
 
           {/* Upcoming Tests */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-lg font-semibold mb-4">Upcoming Tests</h2>
-            <table className="w-full table-auto text-left">
+          <div className="bg-white rounded-lg shadow-tableShadow p-6">
+            <h2 className="text-base font-extrabold mb-2 border-b">
+              Upcoming Tests
+            </h2>
+            <table className="w-full text-left">
               <thead>
-                <tr>
+                <tr className="text-left border-b text-[#00000099]">
                   <th>No</th>
                   <th>Exam Title</th>
                   <th>Scheduled Date</th>
@@ -189,17 +205,17 @@ const InstructorBase = () => {
               </thead>
               <tbody>
                 {creatorUpcomingTests.map((test) => (
-                  <tr key={test.id}>
-                    <td>{test.id}</td>
-                    <td>{test.title}</td>
-                    <td>{test.scheduledDate}</td>
-                    <td>
-                      <button className="text-blue-500">
+                  <tr key={test.id} className="border-b">
+                    <td className="py-2">{test.id}</td>
+                    <td className="py-2">{test.title}</td>
+                    <td className="py-2">{test.scheduledDate}</td>
+                    <td className="py-2">
+                      <button className="text-primary">
                         <FaRegEdit />
                       </button>
                     </td>
-                    <td>
-                      <button className="text-red-500">
+                    <td className="py-2">
+                      <button className="text-primary">
                         <RiDeleteBin5Fill />
                       </button>
                     </td>
@@ -209,24 +225,61 @@ const InstructorBase = () => {
             </table>
           </div>
         </div>
+
         {/* Quick Links */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-lg font-semibold mb-4">Quick Links</h2>
+        <div className="bg-white rounded-lg p-6">
+          <h2 className="text-base font-extrabold mb-8">Quick Links</h2>
           <div className="grid grid-cols-3 gap-4">
             {creatorQuickLinks.map((link, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center p-4 bg-[#10357366] rounded-[15px]"
-              >
-                {/* <div className="text-4xl text-blue-500 mb-2">{link.icon}</div> */}
-                <img src={link.icon} alt="" />
-                <Link to="/" className="text-sm font-medium">
+              <div key={index} className="rounded-[15px] h-[95px]">
+                <div className="bg-[#10357366] flex justify-center py-4 rounded-t-[15px]">
+                  <img src={link.icon} alt="" className="w-ful" />
+                </div>
+                <Link
+                  to="/"
+                  className="text-[11px] bg-[#E6E6E9] text-center block p-[5px] rounded-br-[15px] hover:text-primary"
+                >
                   {link.title}
                 </Link>
               </div>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Test Taker Track List */}
+      <section className="py-6 pl-6 pr-16 bg-white border rounded-[12px] text-xs my-9 w-[80%]">
+        <div className="flex justify-between items-center pb-4 border-b">
+          <h2 className="text-base font-extrabold">Test Taker Track List</h2>
+          <button className="text-primary font-extrabold border border-primary py-1 px-3 rounded-lg hover:bg-blue-100">
+            View all Test Takers
+          </button>
+        </div>
+
+        <table className="w-full mt-4">
+          <thead>
+            <tr className="text-left border-b text-[#00000099]">
+              <th className="pb-2">No</th>
+              <th className="pb-2">Name</th>
+              <th className="pb-2">Test Taken</th>
+              <th className="pb-2">Date Taken</th>
+              <th className="pb-2">Progress Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {creatorTracker.map((test, index) => (
+              <tr key={test.id} className="border-b">
+                <td className="py-2">{index + 1}</td>
+                <td className="py-2">{test.name}</td>
+                <td className="py-2">{test.test}</td>
+                <td className="py-2">{test.date}</td>
+                <td className={`py-2 ${getStatusColor(test.status)}`}>
+                  {test.status}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </section>
     </section>
   );

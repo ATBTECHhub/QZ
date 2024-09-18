@@ -82,7 +82,7 @@ const ManageUser = () => {
                   <FaRegEdit className="cursor-pointer" />
                   <RiDeleteBin5Fill className="cursor-pointer" />
                 </div>
-                <div></div>
+                
               </div>
             </div>
             <div className="text-2xl font-medium font-rubik flex gap-[39px] items-center pt-5">
