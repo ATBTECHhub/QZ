@@ -25,10 +25,10 @@ const Home = () => {
       <Footer />
       <Waitlist/>
 
-      {/* <TestTakerLogin /> */}
-      {/* <TestSubmitted /> */}
-      {/* <Anonymous/> */}
-      {/* <EditProfile/> */}
+      <TestTakerLogin />
+      <TestSubmitted />
+      <Anonymous/>
+      <EditProfile/>
 
 
 
