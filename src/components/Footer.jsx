@@ -23,7 +23,7 @@ const Footer = () => {
           <li className="text-secondary font-semibold">Support</li>
           <li>
             <Link
-              to="/about-us"
+              to="/faq"
               className="hover:text-secondary  transition ease-in-out delay-100"
             >
               FAQs

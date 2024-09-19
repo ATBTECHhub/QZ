@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { testimonials } from "../constants/data";
-
+import { motion } from "framer-motion";
 const Testimonial = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(2);
 
@@ -25,10 +25,22 @@ const Testimonial = () => {
   return (
     <section className="bg-white pt-[48px] pb-[70px] font-bold font-fustat border-b border-[#E6E6E9]">
       <div className="container text-center">
-        <h3 className="text-secondary text-[24px]">OUR TESTIMONIALS</h3>
-        <p className="text-[30px] sm:text-[40px] mb-[56px]">
+        <motion.h3
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", duration: 0.5 }}
+          className="text-secondary text-[24px]"
+        >
+          OUR TESTIMONIALS
+        </motion.h3>
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", duration: 0.5 }}
+          className="text-[30px] sm:text-[40px] mb-[56px]"
+        >
           What people say about us
-        </p>
+        </motion.p>
         <div className="flex flex-col items-center">
           <div className="flex space-x-[15px] md:space-x-[30px] items-center">
             {reorderedTestimonials.map((testimonial) => (
@@ -86,18 +98,3 @@ const Testimonial = () => {
 export default Testimonial;
 
 
-
-
-
-// const Testimonial = () => {
-//   return (
-//     <section className="bg-white py-[48px] font-bold">
-//       <div className="container text-center">
-//         <h3 className="text-secondary text-[24px]">OUR TESTIMONIALS</h3>
-//         <p className="text-[40px]">What people say about us</p>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Testimonial;

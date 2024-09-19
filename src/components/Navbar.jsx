@@ -23,7 +23,6 @@ const Navbar = () => {
             <NavLink to="/features"> Features </NavLink>
           </li>
 
-
           <li>
             <NavLink to="/about-us">About us</NavLink>
           </li>
@@ -45,9 +44,7 @@ const Navbar = () => {
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.15)",
         }}
         className={
-          nav
-            ? "bg-white fixed z-[4] top-0 right-0 w-full h-screen"
-            : "hidden"
+          nav ? "bg-white fixed z-[4] top-0 right-0 w-full h-screen" : "hidden"
         }
       >
         <div className="flex justify-between items-center px-[15px] py-[20px]">
@@ -82,7 +79,7 @@ const Navbar = () => {
           </li>
           <li className="px-[15px] py-[30px] leading-[24px]">
             <Link
-              to="/"
+              to="/login"
               className="px-[50px] bg-secondary rounded-[30px] py-[10px]
               text-base font-medium shadow-btnShadow"
               onClick={handleNav}

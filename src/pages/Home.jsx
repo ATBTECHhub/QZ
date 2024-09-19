@@ -16,19 +16,18 @@ import Waitlist from "./Waitlist";
 const Home = () => {
   return (
     <>
-      <Navbar />
+      <Navbar /> 
       <Hero />
       <Features />
       <AboutUs />
       <Testimonial />
       <Ready />
       <Footer />
-      <Waitlist/>
 
-      <TestTakerLogin />
-      <TestSubmitted />
-      <Anonymous/>
-      <EditProfile/>
+      {/* <TestTakerLogin /> */}
+      {/* <TestSubmitted /> */}
+      {/* <Anonymous/> */}
+      {/* <EditProfile/> */}
 
 
 

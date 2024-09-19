@@ -1,7 +1,10 @@
 const Request = {
-  takerSignup: "/auths/register",
-  takerLogin: "/taker-login",
-  creatorSignup: "/creator-signup",
-  creatorLogin: "/creator-login",
+  signup: "/auths/register",
+  login: "/auths/login",
+
+  // instructor dashboard routes
+  createUser: "/users",
+  createGroup: "/groups",
+  createTest: "/test-create",
 };
 export default Request;
