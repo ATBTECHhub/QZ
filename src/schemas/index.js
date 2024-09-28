@@ -62,9 +62,29 @@ export const ManageGroupSchema = Yup.object().shape({
 
 
 export const CreateTestSchema = Yup.object().shape({
-  test: Yup.string().required("Required"),
+  testName: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
   category: Yup.string().required("Required"),
-  instruction: Yup.string().required("Required"),
+  instructions: Yup.string().required("Required"),
 });
+
+
+export const CreateQuestionSchema = Yup.object().shape({
+  questionText: Yup.string().required("Required"),
+  questionType: Yup.string()
+    .required("Required")
+    .oneOf(["TrueFalse", "multipleChoice", "essay"], "Select a valid type"),
+  questionOptions: Yup.array().of(
+    Yup.object({
+      optionText: Yup.string().required("Option text is required"),
+      isCorrect: Yup.boolean(),
+    })
+  ),
+  points: Yup.number().min(1, "Points must be at least 1").required(),
+});
+// points: Yup.string().min(1, "Points must be at least 1").required("Required"),
+// points: Yup.number()
+//   .typeError("Points must be a number")
+//   .required("Points is required")
+//   .min(1, "Points cannot be negative"),
 

@@ -19,6 +19,7 @@ import Analytics from "./components/InstructorDashboardPages/Analytics";
 import Report from "./components/InstructorDashboardPages/Report";
 import Results from "./components/InstructorDashboardPages/Results";
 import ManageGroup from "./components/InstructorDashboardPages/ManageGroup";
+import ContinueTest from "./components/InstructorDashboardPages/ContinueTest";
 
 function App() {
   return (
@@ -40,7 +41,12 @@ function App() {
             <Route index element={<CreateGroup />} />
             <Route path="manage-groups" element={<ManageGroup />} />
           </Route>
-          <Route path="create-test" element={<CreateTest />} />
+
+          {/* Nestedroutes under create test page */}
+          <Route path="create-test">
+            <Route index element={<CreateTest />} />
+            <Route path="continue" element={<ContinueTest/>} />
+          </Route>
           <Route path="manage-test" element={<ManageTest />} />
           <Route path="questions" element={<QuestionBank />} />
           <Route path="administer-test" element={<AdministerTest />} />

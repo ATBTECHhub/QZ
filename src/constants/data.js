@@ -269,3 +269,9 @@ export const creatorTracker = [
   },
 ];
 
+export const options = [
+  { label: "A", placeholder: "Enter options A" },
+  { label: "B", placeholder: "Enter options B" },
+  { label: "C", placeholder: "Enter options C" },
+  { label: "D", placeholder: "Enter options D" },
+];

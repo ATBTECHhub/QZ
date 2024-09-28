@@ -22,7 +22,6 @@ const CreateUser = () => {
   };
   const initialValues = {
     name: "",
-    // lname: "",
     email: "",
   };
   const onSubmit = async (payload, actions) => {
@@ -90,16 +89,6 @@ const CreateUser = () => {
                 onBlur={handleBlur}
                 error={getError("name")}
               />
-              {/* <TextField
-                label="Last Name"
-                name="lname"
-                type="text"
-                placeholder="Enter Last Name"
-                value={values.lname}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={getError("lname")}
-              /> */}
               <TextField
                 label="Email Address"
                 name="email"
@@ -111,7 +100,11 @@ const CreateUser = () => {
                 error={getError("email")}
               />
               <div className="flex justify-end">
-                <button className="text-white font-medium text-2xl font-rubik bg-primary leading-[28px] px-[39px] py-3 rounded-[8px] mb-3">
+                <button
+                type="submit"
+                  disabled={isSubmitting}
+                  className="disabled:opacity-75 disabled:cursor-not-allowed text-white font-medium text-2xl font-rubik bg-primary leading-[28px] px-[39px] py-3 rounded-[8px] mb-3"
+                >
                   Create User
                 </button>
               </div>
