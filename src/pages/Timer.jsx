@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
+
 const Timer = ({duration}) => {
     const [time, setTime] = useState(duration)
 

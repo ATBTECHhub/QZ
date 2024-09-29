@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import ReactSearchBox from "react-search-box";
-
-const InstructorBase = () => {
-  return (
-    <section className="bg-light font-fustat">
-      <div className="flex justify-between items-center gap-[700px] container ">
-        <p className="justify-center items-center text-sm ">
-          Welcome Back, Adejare
-        </p>
-        <ReactSearchBox />
-      </div>
-      <div className="grid lg:grid-cols-[30%_30%_30%] gap-8  ">
-
-      </div>
-=======
 import useAuthStore from "../../store/authStore";
 import { IoIosSearch } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
@@ -33,7 +17,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 
 const InstructorBase = () => {
-  const user = useAuthStore((state) => state.user);
+  const User = useAuthStore((state) => state.user);
   // Chart data
   const data = {
     labels: ["Tests awaiting", "Tests completed", "In Progress"],
@@ -165,6 +149,7 @@ const InstructorBase = () => {
           </div>
         </div>
       </div>
+      
       <section className="grid lg:grid-cols-[60%_40%] gap-6 rounded-[12px] text-xs">
         <div className="grid gap-5">
           {/* Recently Created Tests */}
@@ -297,7 +282,6 @@ const InstructorBase = () => {
           </tbody>
         </table>
       </section>
->>>>>>> 5f444e9a87a479487467345493392aa0c8061433
     </section>
   );
 };

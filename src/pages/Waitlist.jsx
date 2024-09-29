@@ -17,7 +17,7 @@ const Waitlist = () => {
     } catch (error) {
       console.log(error);
     }
-    await new Promise(() => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();
   };
   const {

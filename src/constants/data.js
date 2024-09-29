@@ -26,6 +26,14 @@ import quicklinkScheduledTest from "../assets/quicklinkScheduledTest.svg";
 import quicklinkCreateUser from "../assets/quicklinkCreateUser.svg";
 import quicklinkOngoingTest from "../assets/quicklinkOngoingTest.svg";
 
+import testIcon1 from "../assets/testIcon1.svg"
+import resultIcon1 from "../assets/resultIcon1.svg"
+import profileIcon from "../assets/profileIcon.svg"
+
+import timeIcon from "../assets/timeIcon.svg"
+import questionIcon from "../assets/questionIcon.svg"
+import dateIcon from "../assets/dateIcon.svg"
+
 export const features = [
   {
     value: "800",
@@ -268,4 +276,248 @@ export const creatorTracker = [
     status: "Missed",
   },
 ];
+export const testTakerDashboard = [
+  {
+    text: "Dashboard",
+    to: "/instructor-dashboard",
+    icon: dashboardIcon,
+  },
+  {
+    text: "User Management",
+    to: "/instructor-dashboard",
+    icon: userManagementIcon,
+    sublinks: [
+      { text: "Create User", to: "/instructor-dashboard/create-user" },
+      { text: "Manage User", to: "/instructor-dashboard/manage-user" },
+      {
+        text: "Create and Manage Groups",
+        to: "/instructor-dashboard/groups",
+      },
+    ],
+  },
+  {
+    text: "Test Management",
+    to: "/instructor-dashboard",
+    icon: testManagementIcon,
+    sublinks: [
+      { text: "Create Test", to: "/instructor-dashboard/create-test" },
+      { text: "Manage Test", to: "/instructor-dashboard/manage-test" },
+      { text: "Question Bank", to: "/instructor-dashboard/questions" },
+    ],
+  },
+  {
+    text: "Test Administration",
+    to: "/instructor-dashboard",
+    icon: administratorIcon,
+    sublinks: [
+      {
+        text: "Configure & Administer Test ",
+        to: "/instructor-dashboard/administer-test",
+      },
+      { text: "Monitor Test", to: "/instructor-dashboard/monitor-test" },
+    ],
+  },
+  {
+    text: "Reports and Results",
+    to: "/instructor-dashboard",
+    icon: resultIcon,
+    sublinks: [
+      { text: "View Results", to: "/instructor-dashboard/results" },
+      { text: "Generate Reports", to: "/instructor-dashboard/reports" },
+      { text: "Analytics", to: "/instructor-dashboard/analytics" },
+    ],
+  },
+  {
+    text: "Log out ",
+    to: "/instructor-dashboard",
+    icon: logoutIcon,
+  },
+];
+
+// TEST TAKER DASHBOARD
+export const testTakerDashboard1 = [
+  {
+    text: "Dashboard",
+    to: "/taker-dashboard",
+    icon: dashboardIcon,
+  },
+  {
+    text: "Tests ",
+    to: "/taker-dashboard",
+    icon: testIcon1,
+    sublinks: [
+      { text: "Available Tests", to: "/taker-dashboard/test" },
+      { text: "Ongoing Tests", to: "/taker-dashboard/ongoing" },
+      {
+        text: "Completed Tests",
+        to: "/taker-dashboard/completed",
+      },
+    ],
+  },
+  {
+    text: "Results",
+    to: "/taker-dashboard",
+    icon: resultIcon1,
+    sublinks: [
+      { text: "Test Results", to: "/taker-dashboard/result" },
+      {
+        text: "Performance Analysis",
+        to: "/taker-dashboard/performance-analysis",
+      },
+    ],
+  },
+  {
+    text: "Profile",
+    to: "/taker-dashboard",
+    icon: profileIcon,
+    sublinks: [
+      {
+        text: "View Profile",
+        to: "/taker-dashboard/view-profile",
+      },
+      { text: "Edit Profile", to: "/taker-dashboard/edit-profile" },
+    ],
+  },
+  {
+    text: "Log out ",
+    to: "/taker-dashboard",
+    icon: logoutIcon,
+  },
+];
+export const takerDashboardWidget = [
+  {
+    title: "Number of Tests",
+    value: 20,
+    icon: widgetOne,
+    color: "bg-[#104573]",
+  },
+  {
+    title: "Completed Tests",
+    value: 20,
+    icon: widgetTwo,
+    color: "bg-[#008000B2]",
+  },
+  {
+    title: "In Progress...",
+    value: 20,
+    icon: widgetThree,
+    color: "bg-[#F3B855]",
+  },
+];
+export const takerTests = [
+  {
+    no: 1,
+    title: "Networking Basics",
+    dueDate: "7 Sept, 2024",
+    duration: "10:00am - 12:00pm",
+    status: "Upcoming",
+    result: "--",
+    statusColor: "text-[#F3B855]",
+  },
+  {
+    no: 2,
+    title: "Basic Computing",
+    dueDate: "2 Aug, 2024",
+    duration: "8:30am - 9:45am",
+    status: "Completed",
+    result: "65%",
+    statusColor: "text-[#008000]",
+  },
+  {
+    no: 3,
+    title: "Cyber Security",
+    dueDate: "15 July, 2024",
+    duration: "9:15am - 9:45am",
+    status: "Missed",
+    result: "0%",
+    statusColor: "text-[#FF0000]",
+  },
+  {
+    no: 4,
+    title: "Java Script Foundation",
+    dueDate: "23 Aug, 2024",
+    duration: "4:00pm - 5:30pm",
+    status: "Completed",
+    result: "75%",
+    statusColor: "text-[#008000]",
+  },
+];
+export const takerQuickLinks = [
+  {
+    title: "Available Tests",
+    icon: quicklinkCreateTest,
+    link: "/available-tests",
+  },
+  {
+    title: "Ongoing Tests",
+    icon: quicklinkScheduledTest,
+    link: "/ongoing-tests",
+  },
+  {
+    title: "Recent Results",
+    icon: quicklinkAnalytics,
+    link: "/recent-results",
+  },
+  { title: "Analytics", icon: quicklinkReport, link: "/analytics" },
+];
+export const completedTests = [
+  {
+    id: 1,
+    title: "Basic Computing",
+    status: "Completed",
+    statusColor: "text-[#008000]",
+    dateTaken: "24 Aug, 2024",
+    result: "65%"
+  },
+  {
+    id: 2,
+    title: "Java script Foundation",
+    status: "Completed",
+    statusColor: "text-[#008000]",
+    dateTaken: "23 Aug, 2024",
+    result: "75%"
+  },
+];
+
+
+
+export const takerUpcomingTests = [
+  {
+    id: 1,
+    title: "Basic Computing",
+    dueDate: "7 Sept, 2024",
+    duration: "10:00am - 12:00pm",
+  },
+];
+
+export const testProgress = [
+  {
+    id: 4,
+    title: "Java Script Foundation",
+    status: "Started!",
+    statusColor: "{#F3B855}",
+    date: "23 Aug, 2024",
+    progressBar: 20,
+    result: "20%",
+  },
+];
+export const availableTest =[
+{
+icon : timeIcon,
+word1: "Time Limit:",
+word2: "90 mins",}
+,
+
+{icon: questionIcon,
+word1: "No of Questions:",
+word2: 50}
+,
+
+{icon: dateIcon,
+word1: "Due Date:",
+word2: "24th Aug 2024",
+},
+];
+
+
 

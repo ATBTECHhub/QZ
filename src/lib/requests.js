@@ -6,5 +6,8 @@ const Request = {
   createUser: "/users",
   createGroup: "/groups",
   createTest: "/test-create",
+  
+  // waitlist
+  waitlist: "/waitlist"
 };
 export default Request;

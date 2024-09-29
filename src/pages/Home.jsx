@@ -10,24 +10,30 @@ import TestSubmitted from "./TestSubmitted";
 import Anonymous from "./Anonymous";
 import EditProfile from "./EditProfile";
 import Waitlist from "./Waitlist";
+import TakerSidenav from "../components/TakerSidenav";
+
 
 
 
 const Home = () => {
   return (
     <>
-      <Navbar /> 
-      <Hero />
-      <Features />
-      <AboutUs />
-      <Testimonial />
-      <Ready />
-      <Footer />
+      {/* <Navbar />  */}
+      {/* <Hero /> */}
+      {/* <Features /> */}
+      {/* <AboutUs /> */}
+      {/* <Testimonial /> */}
+      {/* <Ready /> */}
+      {/* <Footer /> */}
 
+
+      <Waitlist />
       {/* <TestTakerLogin /> */}
       {/* <TestSubmitted /> */}
       {/* <Anonymous/> */}
       {/* <EditProfile/> */}
+      {/* <TakerSidenav/> */}
+
 
 
 

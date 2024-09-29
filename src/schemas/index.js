@@ -32,11 +32,6 @@ export const TestTakerLoginSchema = Yup.object().shape({
   .required("Required"),
 });
 
-<<<<<<< HEAD
-export const WaitlistSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
-});
-=======
 export const CreateUserSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
   // lname: Yup.string().required("Required"),
@@ -73,4 +68,6 @@ export const CreateTestSchema = Yup.object().shape({
   instruction: Yup.string().required("Required"),
 });
 
->>>>>>> 5f444e9a87a479487467345493392aa0c8061433
+export const WaitlistSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+});
