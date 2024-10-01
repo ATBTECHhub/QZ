@@ -11,6 +11,7 @@ export default {
         dark: "rgba(35, 31, 32, 0.80)",
         primaryBg: "rgba(16, 69, 115, 0.90)",
         btnDashboard: "rgba(52, 101, 128, 0.70)",
+         submit: "rgba(16, 53, 115, 0.40)",
         success: "#008000",
       },
       boxShadow: {

@@ -33,6 +33,9 @@ import profileIcon from "../assets/profileIcon.svg"
 import timeIcon from "../assets/timeIcon.svg"
 import questionIcon from "../assets/questionIcon.svg"
 import dateIcon from "../assets/dateIcon.svg"
+import markedIcon from "../assets/markedIcon.svg"
+import scoreIcon from "../assets/scoreIcon.svg"
+
 
 export const features = [
   {
@@ -517,6 +520,23 @@ word2: 50}
 word1: "Due Date:",
 word2: "24th Aug 2024",
 },
+];
+export const completedTest =[
+  {icon:  dateIcon,
+   word1:"Date Completed :",
+   word2:"24th Aug 2024",
+  },
+  {
+   icon:  markedIcon,
+   word1:"Remarks:",
+   word2:"Passed",
+  },
+  {
+   icon:  scoreIcon,
+   word1:"score:",
+   word2:"70%",
+  },
+  
 ];
 
 

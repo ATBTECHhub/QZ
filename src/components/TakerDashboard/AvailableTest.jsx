@@ -54,9 +54,11 @@ const AvailableTest = () => {
               </svg>{" "}
               Info
             </button>
-            <button className="text-primary font-extrabold border border-primary py-1 px-3 rounded-3xl hover:bg-blue-100">
-              Take Test
-            </button>
+            <Link to="/networking-test">
+              <button className="text-primary font-extrabold border border-primary py-1 px-3 rounded-3xl hover:bg-blue-100">
+                Take Test
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -130,7 +132,7 @@ const AvailableTest = () => {
           ))}
         </div>
       </div>
-     
+
       {/* PROGRAMMING */}
 
       <div className="bg-[#FFFFFF]  rounded-md   lg:pr-10 ">
