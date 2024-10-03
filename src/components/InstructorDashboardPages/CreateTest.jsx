@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import TextField from "../TextField";
 import { CreateTestSchema } from "../../schemas";
@@ -8,22 +8,67 @@ import { Axios } from "../../config";
 import Textarea from "../Textarea";
 import { toast } from "react-toastify";
 import useTestStore from "../../store/testStore";
+import { useParams } from "react-router-dom";
+import useAuthStore from "../../store/authStore";
 
 const CreateTest = () => {
+  const { testId } = useParams();
   const [activeTab, setActiveTab] = useState("Create Test");
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
   const tabs = ["Dashboard", "Create Test", "Manage Test"];
-  const initialValues = {
+  const addTestId = useTestStore((state) => state.addTestId);
+  const [initialValues, setInitialValues] = useState({
     testName: "",
     description: "",
     category: "",
     instructions: "",
-    createdBy: "User_ObjectId_Here",
-  };
-  const addTestId = useTestStore((state) => state.addTestId);
+    createdBy: "BunmiAdmin",
+  });
+  useEffect(() => {
+    if (testId) {
+      const fetchTestDetails = async () => {
+        try {
+          const res = await Axios.get(Request.updateTest(testId));
+          console.log(res);
+          const test = res.data;
+          setInitialValues({
+            testName: test.testName,
+            description: test.description,
+            category: test.category,
+            instructions: test.instructions,
+            createdBy: test.createdBy,
+          });
+        } catch (error) {
+          console.error("Failed to fetch test details", error);
+        }
+      };
+      fetchTestDetails();
+    }
+  }, [testId]);
   const onSubmit = async (payload, actions) => {
     try {
-      const res = await Axios.post(Request.createTest, payload);
+      let res;
+      if (testId) {
+        res = await Axios.put(Request.updateTest(testId), payload);
+        if (res.data) {
+          toast.success("Updated successfully");
+            actions.resetForm({
+              values: {
+                testName: "",
+                description: "",
+                category: "",
+                instructions: "",
+                createdBy: "BunmiAdmin",
+              },
+            });
+              navigate("/instructor-dashboard/create-test");
+        } else {
+          toast.error("Test update failed, try again.");
+        }
+      } else {
+        res = await Axios.post(Request.createTest, payload);
+      }
       console.log(res);
       if (res.data.savedTest._id) {
         addTestId(res.data.savedTest._id);
@@ -50,6 +95,7 @@ const CreateTest = () => {
     touched,
   } = useFormik({
     initialValues,
+    enableReinitialize: true,
     validationSchema: CreateTestSchema,
     onSubmit,
   });
@@ -84,7 +130,6 @@ const CreateTest = () => {
           ))}
         </div>
         <div className="mt-4">
-    
           {activeTab === "Create Test" && (
             <form onSubmit={handleSubmit}>
               <TextField

@@ -33,7 +33,12 @@ function App() {
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/instructor-dashboard" element={<InstructorDashboard />}>
           <Route index element={<InstructorBase />} />
-          <Route path="create-user" element={<CreateUser />} />
+
+          {/* Nestedroutes under create user page */}
+          <Route path="create-user">
+            <Route index element={<CreateUser />} />
+            <Route path=":userId" element={<CreateUser />} />
+          </Route>
           <Route path="manage-user" element={<ManageUser />} />
 
           {/* Nestedroutes under manage group page */}
@@ -45,7 +50,8 @@ function App() {
           {/* Nestedroutes under create test page */}
           <Route path="create-test">
             <Route index element={<CreateTest />} />
-            <Route path="continue" element={<ContinueTest/>} />
+            <Route path="continue" element={<ContinueTest />} />
+            <Route path=":testId" element={<CreateTest />} />
           </Route>
           <Route path="manage-test" element={<ManageTest />} />
           <Route path="questions" element={<QuestionBank />} />
