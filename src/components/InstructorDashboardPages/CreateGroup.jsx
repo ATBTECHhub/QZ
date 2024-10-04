@@ -5,7 +5,7 @@ import Request from "../../lib/requests";
 import { useFormik } from "formik";
 import { Axios } from "../../config";
 import { Link, Outlet } from "react-router-dom";
-
+import { toast } from "react-toastify";
 const CreateGroup = () => {
   const initialValues = {
     groupName: "",
@@ -24,6 +24,9 @@ const CreateGroup = () => {
       };
       const res = await Axios.post(Request.createGroup, modifiedPayload);
       console.log(res);
+      if(res.data.message==="Group created successfully"){
+        toast.success("Group created successfully");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +57,10 @@ const CreateGroup = () => {
         </h1>
         <div className="flex justify-between items-center mb-5">
           <p className="text-xl text-primary">Basic Information</p>
-          <Link to="manage-groups" className="font-medium font-rubik text-white bg-primary px-[43px] py-3 rounded-lg">
+          <Link
+            to="manage-groups"
+            className="font-medium font-rubik text-white bg-primary px-[43px] py-3 rounded-lg"
+          >
             Manage Groups
           </Link>
         </div>
@@ -85,7 +91,7 @@ const CreateGroup = () => {
           <div>
             <textarea
               name="memberEmails"
-              placeholder="adebayo@gmail.com"
+              placeholder="adebayo@gmail.com,dave@gmail.com,yimika@yahoo.com"
               className={`w-full px-5 py-3 rounded-[8px] h-[80px] outline-none ${
                 getError("memberEmails") ? "border border-red-500" : ""
               }`}

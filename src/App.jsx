@@ -20,6 +20,7 @@ import Report from "./components/InstructorDashboardPages/Report";
 import Results from "./components/InstructorDashboardPages/Results";
 import ManageGroup from "./components/InstructorDashboardPages/ManageGroup";
 import ContinueTest from "./components/InstructorDashboardPages/ContinueTest";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -31,7 +32,14 @@ function App() {
         <Route path="/test-taker-signup" element={<TakerSignup />} />
         <Route path="/test-creator-signup" element={<CreatorSignup />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
-        <Route path="/instructor-dashboard" element={<InstructorDashboard />}>
+        <Route
+          path="/instructor-dashboard"
+          element={
+            <ProtectedRoute>
+              <InstructorDashboard />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<InstructorBase />} />
 
           {/* Nestedroutes under create user page */}

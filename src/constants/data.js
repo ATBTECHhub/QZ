@@ -162,7 +162,7 @@ export const instructorDashboard = [
     ],
   },
   {
-    text: "Log out ",
+    text: "Log out",
     to: "/instructor-dashboard",
     icon: logoutIcon,
   },

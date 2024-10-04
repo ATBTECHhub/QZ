@@ -5,12 +5,13 @@ const Request = {
   // instructor dashboard routes
   createUser: "/users",
   updateUser: (userId) => `/users/${userId}`,
+
+  //group management
   createGroup: "/groups",
 
-  // createTest: "/tests/create-and-continue",
+  
   // TEST MANAGEMENT
   createTest: "/tests/create",
-
   updateTest: (testId) => `/tests/${testId}`,
   createQuestion: "/tests/:testId/questions",
   allTests: "/tests",
