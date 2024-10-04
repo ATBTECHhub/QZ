@@ -11,6 +11,7 @@ import Anonymous from "./Anonymous";
 import EditProfile from "./EditProfile";
 import Waitlist from "./Waitlist";
 import TakerSidenav from "../components/TakerSidenav";
+import AvailableTest2 from "../components/TakerDashboard/AvailableTest2";
 
 
 
@@ -27,7 +28,8 @@ const Home = () => {
       {/* <Footer /> */}
 
 
-      <Waitlist />
+      {/* <Waitlist /> */}
+      <AvailableTest2/>
       {/* <TestTakerLogin /> */}
       {/* <TestSubmitted /> */}
       {/* <Anonymous/> */}
