@@ -52,6 +52,7 @@ function App() {
           {/* Nestedroutes under manage group page */}
           <Route path="groups">
             <Route index element={<CreateGroup />} />
+            <Route path=":groupId" element={<CreateGroup />} />
             <Route path="manage-groups" element={<ManageGroup />} />
           </Route>
 

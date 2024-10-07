@@ -8,12 +8,18 @@ const Request = {
 
   //group management
   createGroup: "/groups",
+  updateGroup: (groupId) => `/groups/${groupId}`,
 
-  
   // TEST MANAGEMENT
   createTest: "/tests/create",
   updateTest: (testId) => `/tests/${testId}`,
   createQuestion: "/tests/:testId/questions",
   allTests: "/tests",
+
+  // question bank
+  allQuestions: "/questions",
+  
+  // createQuestion: "/questions",
+  // updateQuestion: (questionId) => `/questions/${questionId}`,
 };
 export default Request;

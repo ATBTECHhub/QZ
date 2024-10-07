@@ -9,6 +9,7 @@ import { FaRegEdit } from "react-icons/fa";
 import Request from "../../lib/requests";
 import { Axios } from "../../config";
 import { toast } from "react-toastify";
+import DateFormatter from "../../utils/DateFormatter";
 const ManageTest = () => {
   const [activeTab, setActiveTab] = useState("Manage Test");
   const tabs = ["Dashboard", "Create Test", "Manage Test"];
@@ -33,7 +34,6 @@ const ManageTest = () => {
   const getTests = async () => {
     try {
       const res = await Axios.get(Request.allTests);
-      console.log(res);
       setTests(res.data);
     } catch (error) {
       console.log(error);
@@ -151,12 +151,16 @@ const ManageTest = () => {
                       <p className="flex gap-1 text-[#00000099]">
                         <FaRegCalendarAlt className="text-xl text-[#346580] opacity-[0.7]" />
                         Date Created
-                        <span className="text-black"> 23rd Aug 2024</span>
+                        <span className="text-black">
+                          <DateFormatter date={test.createdAt} />
+                        </span>
                       </p>
                       <p className="flex gap-1 text-[#00000099]">
                         <MdAccessTime className="text-xl text-[#346580] opacity-[0.7]" />
                         Last Updated{" "}
-                        <span className="text-black">{test.updatedAt}</span>
+                        <span className="text-black">
+                          <DateFormatter date={test.updatedAt} />
+                        </span>
                       </p>
                     </div>
                     <div className="flex gap-[10px] items-center text-primary">

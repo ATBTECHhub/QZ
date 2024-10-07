@@ -8,14 +8,15 @@ import Request from "../../lib/requests";
 import { IoIosSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import DateFormatter from "../../utils/DateFormatter";
 const ManageGroup = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
-   const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const getGroups = async () => {
     try {
       const res = await Axios.get(Request.createGroup);
-      console.log(res);
       setGroups(res.data);
     } catch (error) {
       toast.error(
@@ -30,10 +31,29 @@ const ManageGroup = () => {
       group.groupName.toLowerCase().includes(searchTerm.toLowerCase())
     )
     .sort((a, b) => {
-      if (a.groupName.toLowerCase().startsWith(searchTerm.toLowerCase())) return -1;
-      if (b.groupName.toLowerCase().startsWith(searchTerm.toLowerCase())) return 1;
+      if (a.groupName.toLowerCase().startsWith(searchTerm.toLowerCase()))
+        return -1;
+      if (b.groupName.toLowerCase().startsWith(searchTerm.toLowerCase()))
+        return 1;
       return 0;
     });
+  const handleDeleteGroup = async (groupId) => {
+    try {
+      const res = await Axios.delete(Request.updateGroup(groupId));
+      console.log(res);
+      if (res.data.message === "Group deleted successfully") {
+        toast.success("Group deleted successfully");
+        setGroups((prevGroups) =>
+          prevGroups.filter((group) => group._id !== groupId)
+        );
+      }
+    } catch (error) {
+      toast.error(
+        "Error deleting group: " + error.response?.data?.message ||
+          "Unknown error"
+      );
+    }
+  };
   useEffect(() => {
     getGroups();
   }, []);
@@ -76,7 +96,10 @@ const ManageGroup = () => {
         )}
         <div>
           {filteredGroups.map((group, i) => (
-            <div className="bg-white mb-5 shadow-formShadow pb-[60px] rounded-[12px]">
+            <div
+              key={i}
+              className="bg-white mb-5 shadow-formShadow pb-[60px] rounded-[12px]"
+            >
               <h2 className="text-base rounded-tr-[20px] font-extrabold text-white bg-primary pl-5 pt-[19px] pb-2 pr-[50px]">
                 {group.groupName}
               </h2>
@@ -87,12 +110,19 @@ const ManageGroup = () => {
                 <div className="flex items-center justify-between pr-6 gap-[50px] pt-3">
                   <p className="flex gap-1 text-[#00000099]">
                     <FaRegCalendarAlt className="text-xl text-[#346580] opacity-[0.7]" />
-                    STart Date
-                    <span className="text-black"> 23rd Aug 2024</span>
+                    Date Created
+                    <span className="text-black">
+                      {" "}
+                      <DateFormatter date={group.createdAt} />
+                    </span>
                   </p>
                   <p className="flex gap-1 text-[#00000099]">
                     <MdAccessTime className="text-xl text-[#346580] opacity-[0.7]" />
-                    End Date<span className="text-black">24th Aug 2024</span>
+                    Last Updated
+                    <span className="text-black">
+                      {" "}
+                      <DateFormatter date={group.updatedAt} />
+                    </span>
                   </p>
                   <p className="flex gap-1 text-[#00000099]">
                     <HiOutlineQuestionMarkCircle className="text-xl text-[#346580] opacity-[0.7]" />
@@ -100,13 +130,28 @@ const ManageGroup = () => {
                     <span className="text-black">{group.members.length}</span>
                   </p>
                   <div className="flex gap-[10px] items-center text-primary pl-5">
-                    <FaRegEdit className="cursor-pointer" />
-                    <RiDeleteBin5Fill className="cursor-pointer" />
+                    <Link to={`/instructor-dashboard/groups/${group._id}`}>
+                      <FaRegEdit className="cursor-pointer" />
+                    </Link>
+                    <RiDeleteBin5Fill
+                      className="cursor-pointer"
+                      onClick={() => handleDeleteGroup(group._id)}
+                    />
                   </div>
                 </div>
               </div>
             </div>
           ))}
+          {groups.length > 0 && (
+            <div className="text-2xl font-medium font-rubik flex gap-[39px] items-center pt-5">
+              <button className="text-white bg-primary py-3 rounded-lg w-[187px] whitespace-nowrap">
+                Assign Test
+              </button>
+              <button className="bg-white text-primary py-3 rounded-lg border border-btnDashboard w-[187px] whitespace-nowrap">
+                Change Status
+              </button>
+            </div>
+          )}
         </div>
 
         {/* <div className="bg-white shadow-formShadow pb-[60px] rounded-[12px]">

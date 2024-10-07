@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "../TextField";
 import { ManageGroupSchema } from "../../schemas";
 import Request from "../../lib/requests";
 import { useFormik } from "formik";
 import { Axios } from "../../config";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 const CreateGroup = () => {
-  const initialValues = {
+  const { groupId } = useParams();
+  const navigate = useNavigate();
+  const [initialValues, setInitialValues] = useState({
     groupName: "",
     groupDescription: "",
     memberEmails: "",
-  };
+  });
+  useEffect(() => {
+    if (groupId) {
+      const fetchGroupDetails = async () => {
+        try {
+          const res = await Axios.get(Request.updateGroup(groupId));
+          const group = res.data;
+          const emails = group.members.map((member) => member.email).join(", ");
+          setInitialValues({
+            groupName: group.groupName,
+            groupDescription: group.groupDescription,
+            memberEmails: emails,
+          });
+        } catch (error) {
+          toast(error.message || "Failed to fetch group details");
+          console.log(error);
+        }
+      };
+      fetchGroupDetails();
+    }
+  }, [groupId]);
 
   const onSubmit = async (payload, actions) => {
     try {
@@ -22,10 +44,25 @@ const CreateGroup = () => {
         ...payload,
         memberEmails: emailsArray,
       };
-      const res = await Axios.post(Request.createGroup, modifiedPayload);
-      console.log(res);
-      if(res.data.message==="Group created successfully"){
-        toast.success("Group created successfully");
+      let res;
+      if (groupId) {
+        res = await Axios.put(Request.updateGroup(groupId), modifiedPayload);
+        if (res.data.message === "Group updated successfully") {
+          toast.success("Group updated successfully");
+          actions.resetForm({
+            values: {
+              groupName: "",
+              groupDescription: "",
+              memberEmails: "",
+            },
+          });
+          navigate("/instructor-dashboard/groups");
+        }
+      } else {
+        res = await Axios.post(Request.createGroup, modifiedPayload);
+        if (res.data.message === "Group created successfully") {
+          toast.success("Group created successfully");
+        }
       }
     } catch (error) {
       console.log(error);
@@ -43,6 +80,7 @@ const CreateGroup = () => {
     touched,
   } = useFormik({
     initialValues,
+    enableReinitialize: true,
     validationSchema: ManageGroupSchema,
     onSubmit,
   });
@@ -58,7 +96,7 @@ const CreateGroup = () => {
         <div className="flex justify-between items-center mb-5">
           <p className="text-xl text-primary">Basic Information</p>
           <Link
-            to="manage-groups"
+            to="/instructor-dashboard/groups/manage-groups"
             className="font-medium font-rubik text-white bg-primary px-[43px] py-3 rounded-lg"
           >
             Manage Groups
@@ -110,7 +148,7 @@ const CreateGroup = () => {
             disabled={isSubmitting}
             className="disabled:opacity-75 disabled:cursor-not-allowed font-rubik font-medium text-2xl text-white mt-[90px] bg-primary py-3 px-[43px] rounded-[8px]"
           >
-            Create Group
+            {groupId ? "Save" : "Create Group"}
           </button>
         </form>
       </section>

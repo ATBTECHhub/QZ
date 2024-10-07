@@ -9,6 +9,7 @@ import { FaRegEdit } from "react-icons/fa";
 import Request from "../../lib/requests";
 import { toast } from "react-toastify";
 import { Axios } from "../../config";
+import DateFormatter from "../../utils/DateFormatter";
 const ManageUser = () => {
   const [activeTab, setActiveTab] = useState("Manage User");
   const navigate = useNavigate();
@@ -137,12 +138,17 @@ const ManageUser = () => {
                       <p className="flex gap-1 text-[#00000099]">
                         <FaRegCalendarAlt className="text-xl text-[#346580] opacity-[0.7]" />
                         Date Created
-                        <span className="text-black">{user.createdAt}</span>
+                        <span className="text-black">
+                          <DateFormatter date={user.createdAt} />
+                        </span>
                       </p>
                       <p className="flex gap-1 text-[#00000099]">
                         <MdAccessTime className="text-xl text-[#346580] opacity-[0.7]" />
                         Last Updated{" "}
-                        <span className="text-black">{user.updatedAt}</span>
+                        <span className="text-black">
+                          {" "}
+                          <DateFormatter date={user.updatedAt} />
+                        </span>
                       </p>
                     </div>
                     <div className="flex gap-[10px] items-center text-primary">

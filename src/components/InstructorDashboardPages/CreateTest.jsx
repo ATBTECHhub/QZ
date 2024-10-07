@@ -106,7 +106,7 @@ const CreateTest = () => {
     setActiveTab(tab);
     if (tab === "Dashboard") {
       navigate("/instructor-dashboard");
-    } else if (tab === "Manage User") {
+    } else if (tab === "Manage Test") {
       navigate("/instructor-dashboard/manage-test");
     }
   };
