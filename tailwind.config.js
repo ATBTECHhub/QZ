@@ -13,6 +13,8 @@ export default {
         btnDashboard: "rgba(52, 101, 128, 0.70)",
          submit: "rgba(16, 53, 115, 0.40)",
         success: "#008000",
+      
+    
       },
       boxShadow: {
         btnShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.12)",
@@ -30,6 +32,7 @@ export default {
       backgroundImage: {
         footerBg: "url('../src/assets/footerBg.svg')",
         waitlistBg: "url('../src/assets/waitlistBg.svg')",
+        testResultBg: "url('../src/assets/line.svg')",
       },
     },
   },

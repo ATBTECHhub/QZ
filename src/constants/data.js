@@ -35,6 +35,9 @@ import questionIcon from "../assets/questionIcon.svg"
 import dateIcon from "../assets/dateIcon.svg"
 import markedIcon from "../assets/markedIcon.svg"
 import scoreIcon from "../assets/scoreIcon.svg"
+import roundIcon from "../assets/roundIcon.svg"
+
+
 
 
 export const features = [
@@ -537,6 +540,29 @@ export const completedTest =[
    word2:"70%",
   },
   
+];
+
+export const testReslt = [
+  {
+    icon: roundIcon,
+    title: "Total Score:",
+    status: "70/100",
+  },
+  {
+    icon: roundIcon,
+    title: "Passing Score:",
+    status: "70",
+  },
+  {
+    icon: roundIcon,
+    title: "Status:",
+    status: "Passed",
+  },
+  {
+    icon: roundIcon,
+    title: "Time Taken:",
+    status: "45 minutes",
+  },
 ];
 
 
