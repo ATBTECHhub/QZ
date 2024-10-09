@@ -2,15 +2,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Request from "../../lib/requests";
 import { useFormik } from "formik";
-import { CreateQuestionSchema } from "../../schemas";
+import * as Yup from "yup";
+// import { CreateQuestionSchema } from "../../schemas";
 import Textarea from "../Textarea";
 import useTestStore from "../../store/testStore";
 import { Axios } from "../../config";
+import TrueFalse from "./TrueFalse";
+import { MultipleChoiceSchema, TrueFalseSchema } from "../../schemas";
+import Multichoice from "./Multichoice";
+import { toast } from "react-toastify";
 const ContinueTest = () => {
   const [activeTab, setActiveTab] = useState("Create Questions");
   const navigate = useNavigate();
   const testIds = useTestStore((state) => state.testIds);
   const tabs = ["Dashboard", "Create Test", "Create Questions"];
+  
 
   // const handleTabClick = (tab) => {
   //   setActiveTab(tab);
@@ -41,20 +47,46 @@ const ContinueTest = () => {
       { optionText: "", isCorrect: false },
       { optionText: "", isCorrect: false },
     ],
+    questionAnswers: [],
     points: 0,
     randomizeAnswers: true,
   };
   const onSubmit = async (payload, actions) => {
-    console.log("Form submitted", payload);
+    const {
+      questionType,
+      questionText,
+      questionOptions,
+      questionAnswers,
+      points,
+      randomizeAnswers,
+    } = payload;
+    let formattedPayload = {};
+    if (questionType === "multipleChoice") {
+      formattedPayload = {
+        questionType,
+        questionText,
+        questionOptions,
+        points,
+        randomizeAnswers,
+      };
+    } else if (questionType === "TrueFalse") {
+      formattedPayload = {
+        questionType,
+        questionText,
+        questionAnswers,
+        points,
+        randomizeAnswers,
+      };
+    }
     try {
       const latestTestId = testIds[testIds.length - 1];
       const requestUrl = Request.createQuestion.replace(
         ":testId",
         latestTestId
       );
-      const res = await Axios.post(requestUrl, payload);
+      const res = await Axios.post(requestUrl, formattedPayload);
       console.log(res);
-      if(res.status===201){
+      if (res.status === 201) {
         navigate("/instructor-dashboard/manage-test");
       }
     } catch (error) {
@@ -64,6 +96,29 @@ const ContinueTest = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();
   };
+
+  const getValidationSchema = (questionType) =>
+    Yup.object().shape({
+      questionType: Yup.string()
+        .required("Question Type is required")
+        .oneOf(["multipleChoice", "TrueFalse"]),
+      ...(questionType === "multipleChoice"
+        ? {
+            questionText: MultipleChoiceSchema.fields.questionText,
+            questionOptions: MultipleChoiceSchema.fields.questionOptions,
+            points: MultipleChoiceSchema.fields.points,
+            randomizeAnswers: MultipleChoiceSchema.fields.randomizeAnswers,
+          }
+        : questionType === "TrueFalse"
+        ? {
+            questionText: TrueFalseSchema.fields.questionText,
+            questionAnswers: TrueFalseSchema.fields.questionAnswers,
+            points: TrueFalseSchema.fields.points,
+            randomizeAnswers: TrueFalseSchema.fields.randomizeAnswers,
+          }
+        : {}),
+    });
+
   const {
     handleChange,
     values,
@@ -75,7 +130,10 @@ const ContinueTest = () => {
     setFieldValue,
   } = useFormik({
     initialValues,
-    validationSchema: CreateQuestionSchema,
+    // validationSchema: CreateQuestionSchema,
+    validationSchema: Yup.lazy((values) =>
+      getValidationSchema(values.questionType)
+    ),
     onSubmit,
   });
   const getError = (key) => {
@@ -128,10 +186,8 @@ const ContinueTest = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               name="points"
-              // error={getError("points")}
               className={`outline-none border border-[#808080B2] w-[60px] px-2 text-sm ${
                 getError("points") ? "border border-red-500" : ""
-                // className="outline-none border border-[#808080B2] w-[60px] px-2 text-sm"
               }`}
             />
           </div>
@@ -209,65 +265,14 @@ const ContinueTest = () => {
             {/* Multichoice inputs */}
             {values.questionType === "multipleChoice" && (
               <>
-                <div className="bg-white gap-[9px] flex flex-col pl-[23px] pr-[51px] pb-[33px] pt-4 rounded-xl shadow-formShadow mb-[64px]">
-                  <p className="text-base  leading-6 text-darkPrimary font-extrabold">
-                    Enter Answer options
-                  </p>
-
-                  {values.questionOptions.map((option, index) => (
-                    <div key={index} className="flex gap-[10px]">
-                      <label
-                        htmlFor={`option-${index}`}
-                        className="text-base font-extrabold leading-[22px]"
-                      >
-                        {String.fromCharCode(65 + index)}
-                      </label>
-                      <div className="w-full">
-                        <textarea
-                          type="text"
-                          name={`questionOptions[${index}].optionText`}
-                          placeholder={`Enter option ${String.fromCharCode(
-                            65 + index
-                          )}`}
-                          id={`option-${index}`}
-                          className={`border border-[#E6E6E9] px-5 w-full py-3 rounded-[8px] outline-none h-[80px] resize-none ${
-                            getError(`questionOptions[${index}].optionText`)
-                              ? "border-red-500"
-                              : ""
-                          }`}
-                          value={
-                            values.questionOptions[index]?.optionText 
-                          }
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-
-                        <div>
-                          <input
-                            id={`isCorrect-${index}`}
-                            type="checkbox"
-                            name={`questionOptions[${index}].isCorrect`}
-                            onChange={() =>
-                              setFieldValue(
-                                `questionOptions[${index}].isCorrect`,
-                                !option.isCorrect
-                              )
-                            }
-                            onBlur={handleBlur}
-                            checked={option.isCorrect}
-                          />
-                          <label
-                            htmlFor={`isCorrect-${index}`}
-                            className="text-base text-[#231F20CC] ml-1 cursor-pointer"
-                          >
-                            Correct Answer
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
+                <Multichoice
+                  values={values}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  setFieldValue={setFieldValue}
+                  isSubmitting={isSubmitting}
+                  getError={(name) => errors[name] && touched[name]}
+                />
                 <Randomize />
                 <div className="flex items-center justify-between my-[48px]">
                   <button
@@ -275,7 +280,7 @@ const ContinueTest = () => {
                     onClick={() =>
                       setFieldValue("questionOptions", [
                         ...values.questionOptions,
-                        { optionText: "", isCorrect: "" },
+                        { optionText: "", isCorrect: false },
                       ])
                     }
                     className="w-[251px] whitespace-nowrap text-xl font-extrabold px-[43px] py-3 rounded-lg text-white bg-primary"
@@ -291,51 +296,102 @@ const ContinueTest = () => {
                   </button>
                 </div>
               </>
+
+              // <>
+              //   <div className="bg-white gap-[9px] flex flex-col pl-[23px] pr-[51px] pb-[33px] pt-4 rounded-xl shadow-formShadow mb-[64px]">
+              //     <p className="text-base  leading-6 text-darkPrimary font-extrabold">
+              //       Enter Answer options
+              //     </p>
+
+              //     {values.questionOptions.map((option, index) => (
+              //       <div key={index} className="flex gap-[10px]">
+              //         <label
+              //           htmlFor={`option-${index}`}
+              //           className="text-base font-extrabold leading-[22px]"
+              //         >
+              //           {String.fromCharCode(65 + index)}
+              //         </label>
+              //         <div className="w-full">
+              //           <textarea
+              //             type="text"
+              //             name={`questionOptions[${index}].optionText`}
+              //             placeholder={`Enter option ${String.fromCharCode(
+              //               65 + index
+              //             )}`}
+              //             id={`option-${index}`}
+              //             className={`border border-[#E6E6E9] px-5 w-full py-3 rounded-[8px] outline-none h-[80px] resize-none ${
+              //               getError(`questionOptions[${index}].optionText`)
+              //                 ? "border-red-500"
+              //                 : ""
+              //             }`}
+              //             value={values.questionOptions[index]?.optionText}
+              //             onChange={handleChange}
+              //             onBlur={handleBlur}
+              //           />
+
+              //           <div>
+              //             <input
+              //               id={`isCorrect-${index}`}
+              //               type="checkbox"
+              //               name={`questionOptions[${index}].isCorrect`}
+              //               onChange={() =>
+              //                 setFieldValue(
+              //                   `questionOptions[${index}].isCorrect`,
+              //                   !option.isCorrect
+              //                 )
+              //               }
+              //               onBlur={handleBlur}
+              //               checked={option.isCorrect}
+              //             />
+              //             <label
+              //               htmlFor={`isCorrect-${index}`}
+              //               className="text-base text-[#231F20CC] ml-1 cursor-pointer"
+              //             >
+              //               Correct Answer
+              //             </label>
+              //           </div>
+              //         </div>
+              //       </div>
+              //     ))}
+              //   </div>
+
+              //   <Randomize />
+              //   <div className="flex items-center justify-between my-[48px]">
+              //     <button
+              //       type="button"
+              //       onClick={() =>
+              //         setFieldValue("questionOptions", [
+              //           ...values.questionOptions,
+              //           { optionText: "", isCorrect: "" },
+              //         ])
+              //       }
+              //       className="w-[251px] whitespace-nowrap text-xl font-extrabold px-[43px] py-3 rounded-lg text-white bg-primary"
+              //     >
+              //       Add More Options
+              //     </button>
+              //     <button
+              //       type="submit"
+              //       disabled={isSubmitting}
+              //       className="disabled:opacity-75 disabled:cursor-not-allowed w-[251px] whitespace-nowrap text-xl font-extrabold px-[43px] py-3 rounded-lg text-white border-primary border bg-primary"
+              //     >
+              //       Submit
+              //     </button>
+              //   </div>
+              // </>
             )}
 
             {/* True or false inputs */}
             {values.questionType === "TrueFalse" && (
               <>
-                <section>
-                  <div className="bg-white gap-[22px] flex flex-col pl-[23px] pr-[51px] pb-[33px] pt-4 rounded-xl shadow-formShadow mb-[64px]">
-                    <p className="text-base leading-6 text-darkPrimary font-extrabold">
-                      Enter Answer options
-                    </p>
-                    <div className="flex flex-col gap-[15px]">
-                      <div>
-                        <input
-                          type="radio"
-                          id="true"
-                          name="fav_language"
-                          //   value="true"
-                        />
-                        <label
-                          for="true"
-                          className="text-base text-darkPrimary leading-[22px] ml-2"
-                        >
-                          True
-                        </label>
-                      </div>
-
-                      <div>
-                        <input
-                          type="radio"
-                          id="css"
-                          name="fav_language"
-                          //   value="CSS"
-                        />
-                         {" "}
-                        <label
-                          for="css"
-                          className="text-base text-darkPrimary leading-[22px] ml-2"
-                        >
-                          False
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </section>
+                <TrueFalse values={values} setFieldValue={setFieldValue} />
                 <Randomize />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="disabled:opacity-75 mt-5 disabled:cursor-not-allowed w-[251px] whitespace-nowrap text-xl font-extrabold px-[43px] py-3 rounded-lg text-white border-primary border bg-primary"
+                >
+                  Submit
+                </button>
               </>
             )}
           </form>

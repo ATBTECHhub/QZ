@@ -18,7 +18,12 @@ const Request = {
 
   // question bank
   allQuestions: "/questions",
-  
+
+  //administer test
+  administerTest: (testId) => `/tests/administer/${testId}`,
+
+  // monitorTest: (testId) => `/tests/${testId}/monitor`,
+
   // createQuestion: "/questions",
   // updateQuestion: (questionId) => `/questions/${questionId}`,
 };

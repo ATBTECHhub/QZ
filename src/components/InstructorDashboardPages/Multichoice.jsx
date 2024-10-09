@@ -1,12 +1,20 @@
-import React from 'react'
 
-const Multichoice = () => {
+
+const Multichoice = ({
+  values,
+  handleChange,
+  handleBlur,
+  setFieldValue,
+  isSubmitting,
+  getError,
+}) => {
   return (
     <>
       <div className="bg-white gap-[9px] flex flex-col pl-[23px] pr-[51px] pb-[33px] pt-4 rounded-xl shadow-formShadow mb-[64px]">
-        <p className="text-base  leading-6 text-darkPrimary font-extrabold">
-          Enter Answer options
+        <p className="text-base leading-6 text-darkPrimary font-extrabold">
+          Enter Answer Options
         </p>
+
         {values.questionOptions.map((option, index) => (
           <div key={index} className="flex gap-[10px]">
             <label
@@ -26,7 +34,7 @@ const Multichoice = () => {
                     ? "border-red-500"
                     : ""
                 }`}
-                value={values.questionOptions[index]?.optionText || ""}
+                value={values.questionOptions[index]?.optionText}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -36,7 +44,12 @@ const Multichoice = () => {
                   id={`isCorrect-${index}`}
                   type="checkbox"
                   name={`questionOptions[${index}].isCorrect`}
-                  onChange={handleChange}
+                  onChange={() =>
+                    setFieldValue(
+                      `questionOptions[${index}].isCorrect`,
+                      !option.isCorrect
+                    )
+                  }
                   onBlur={handleBlur}
                   checked={option.isCorrect}
                 />
@@ -53,8 +66,10 @@ const Multichoice = () => {
       </div>
 
       
+
+     
     </>
   );
-}
+};
 
-export default Multichoice
+export default Multichoice;
