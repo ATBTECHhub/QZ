@@ -18,12 +18,13 @@ const CreateTest = () => {
   const user = useAuthStore((state) => state.user);
   const tabs = ["Dashboard", "Create Test", "Manage Test"];
   const addTestId = useTestStore((state) => state.addTestId);
+  
   const [initialValues, setInitialValues] = useState({
     testName: "",
     description: "",
     category: "",
     instructions: "",
-    createdBy: "BunmiAdmin",
+    createdBy: user,
   });
   useEffect(() => {
     if (testId) {

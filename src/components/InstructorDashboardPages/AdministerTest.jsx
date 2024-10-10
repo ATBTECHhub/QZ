@@ -7,6 +7,8 @@ import { Axios } from "../../config";
 import Request from "../../lib/requests";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
+import IndividualFilter from "./IndividualFilter";
+import GroupFilter from "./GroupFilter";
 const AdministerTest = () => {
   const [tests, setTests] = useState([]);
   const [recentTests, setRecentTests] = useState([]);
@@ -19,13 +21,13 @@ const AdministerTest = () => {
     passingScore: "",
     randomizeQuestions: false,
     attempts: 1,
+    method: "",
   };
 
   useEffect(() => {
     const fetchTests = async () => {
       try {
         const response = await Axios.get(Request.allTests);
-        console.log(response);
         const allTests = response.data;
         const lastFiveTests = allTests.slice(-5).reverse();
         setTests(allTests);
@@ -301,20 +303,30 @@ const AdministerTest = () => {
         </label>
         <select
           id="audience"
-          // name="timeLimit"
-          // value={values.timeLimit}
+          name="method"
+          value={values.method}
           onChange={handleChange}
           onBlur={handleBlur}
           className={`w-full px-3 py-2 border cursor-pointer border-[#E6E6E9] rounded-lg outline-none ${
-            getError("timeLimit") ? "border border-red-500" : ""
+            getError("method") ? "border border-red-500" : ""
           }`}
         >
           <option value="">Select Target Audience</option>
-          <option value="">Individual User</option>
-          <option value="">Groups</option>
-          <option value="email">Email links</option>
+          <option value="manual">Individual User</option>
+          <option value="email">Groups</option>
+          <option value="link">Email links</option>
         </select>
       </div>
+
+      {/* Individual */}
+      {values.method === "manual" && <IndividualFilter />}
+
+      {/* Group  */}
+      {values.method === "email" && <GroupFilter />}
+
+      <button className="text-white font-medium text-2xl bg-primary py-3 rounded-lg w-[187px] whitespace-nowrap">
+        Assign Test
+      </button>
     </section>
   );
 };
