@@ -19,6 +19,8 @@ import Analytics from "./components/InstructorDashboardPages/Analytics";
 import Report from "./components/InstructorDashboardPages/Report";
 import Results from "./components/InstructorDashboardPages/Results";
 import ManageGroup from "./components/InstructorDashboardPages/ManageGroup";
+import ContinueTest from "./components/InstructorDashboardPages/ContinueTest";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -30,17 +32,36 @@ function App() {
         <Route path="/test-taker-signup" element={<TakerSignup />} />
         <Route path="/test-creator-signup" element={<CreatorSignup />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
-        <Route path="/instructor-dashboard" element={<InstructorDashboard />}>
+        <Route
+          path="/instructor-dashboard"
+          element={
+            <ProtectedRoute>
+              <InstructorDashboard />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<InstructorBase />} />
-          <Route path="create-user" element={<CreateUser />} />
+
+          {/* Nestedroutes under create user page */}
+          <Route path="create-user">
+            <Route index element={<CreateUser />} />
+            <Route path=":userId" element={<CreateUser />} />
+          </Route>
           <Route path="manage-user" element={<ManageUser />} />
 
           {/* Nestedroutes under manage group page */}
           <Route path="groups">
             <Route index element={<CreateGroup />} />
+            <Route path=":groupId" element={<CreateGroup />} />
             <Route path="manage-groups" element={<ManageGroup />} />
           </Route>
-          <Route path="create-test" element={<CreateTest />} />
+
+          {/* Nestedroutes under create test page */}
+          <Route path="create-test">
+            <Route index element={<CreateTest />} />
+            <Route path="continue" element={<ContinueTest />} />
+            <Route path=":testId" element={<CreateTest />} />
+          </Route>
           <Route path="manage-test" element={<ManageTest />} />
           <Route path="questions" element={<QuestionBank />} />
           <Route path="administer-test" element={<AdministerTest />} />

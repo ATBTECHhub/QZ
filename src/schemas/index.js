@@ -62,9 +62,94 @@ export const ManageGroupSchema = Yup.object().shape({
 
 
 export const CreateTestSchema = Yup.object().shape({
-  test: Yup.string().required("Required"),
+  testName: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
   category: Yup.string().required("Required"),
-  instruction: Yup.string().required("Required"),
+  instructions: Yup.string().required("Required"),
 });
+
+
+// Validation schema for True/False question
+export const TrueFalseSchema = Yup.object().shape({
+  questionText: Yup.string().required("Required"),
+  questionType: Yup.string()
+    .oneOf(["TrueFalse"], "Invalid type")
+    .required("Required"),
+  questionAnswers: Yup.array()
+    .min(1, "You must select an answer")
+    .required("Required"),
+  points: Yup.number().min(1, "Points must be at least 1").required(),
+});
+
+// Validation schema for Multiple Choice question
+export const MultipleChoiceSchema = Yup.object().shape({
+  questionText: Yup.string().required("Required"),
+  questionType: Yup.string()
+    .oneOf(["multipleChoice"], "Invalid type")
+    .required("Required"),
+  questionOptions: Yup.array().of(
+    Yup.object({
+      optionText: Yup.string().required("Option text is required"),
+      isCorrect: Yup.boolean(),
+    })
+  ).min(2, "At least two options are required for multiple choice"),
+  points: Yup.number().min(1, "Points must be at least 1").required(),
+});
+
+
+
+export const AdminiterTestSchema = Yup.object().shape({
+  startDate: Yup.date().required("Start date is required"),
+  endDate: Yup.date()
+    .required("End date is required")
+    .min(Yup.ref("startDate"), "End date cannot be before start date"),
+  timeLimit: Yup.number().required("Time limit is required"),
+
+  passingScore: Yup.number()
+    .required("Required")
+    .min(5, "Score must be at least 5")
+    .max(100, "Passing score can't exceed 100"),
+  randomizeQuestions: Yup.boolean().required(
+    "Please select an option for randomizing questions"
+  ),
+  attempts: Yup.number()
+    .required("Number of attempts is required")
+    .min(1, "Attempts cannot be less than 1"),
+});
+
+// Validation schema for 
+
+
+
+
+
+
+
+
+
+/* export const CreateQuestionSchema = Yup.object().shape({
+  questionText: Yup.string().required("Required"),
+  questionType: Yup.string()
+    .required("Required")
+    .oneOf(["TrueFalse", "multipleChoice", "essay"], "Select a valid type"),
+  questionOptions: Yup.array().of(
+    Yup.object({
+      optionText: Yup.string().required("Option text is required"),
+      isCorrect: Yup.boolean(),
+    })
+  ),
+  points: Yup.number().min(1, "Points must be at least 1").required(),
+}); */ 
+
+
+
+
+
+
+
+// points: Yup.string().min(1, "Points must be at least 1").required("Required"),
+// points: Yup.number()
+//   .typeError("Points must be a number")
+//   .required("Points is required")
+//   .min(1, "Points cannot be negative"),
 

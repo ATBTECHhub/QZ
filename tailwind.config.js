@@ -19,6 +19,7 @@ export default {
         formShadow: "0px 4px 28.3px 3px #00000012",
         tableShadow: " 0px 4px 28.3px 3px rgba(0, 0, 0, 0.07)",
         
+        
       },
       fontFamily: {
         pop: '"Poppins", sans-serif',

@@ -1,28 +1,34 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import {jwtDecode} from "jwt-decode"; 
+import { jwtDecode } from "jwt-decode";
 
 const useAuthStore = create(
   persist(
     (set) => ({
       token: null,
       user: null,
+      role: null,
 
       setToken: (token) => {
-        // Decode JWT token to get user details
-        const userDetails = jwtDecode(token);
-         console.log("Decoded User Details:", userDetails);
-        // Update store with token and user details
-        set({ token, user: userDetails });
+        set({ token });
+        // Decode JWT token to get user role
+        const decoded = jwtDecode(token);
+        const userRole = decoded?.role; 
+        set({ role: userRole });
+
+        console.log("User Role:", userRole);
+      },
+      setUser: (userData) => {
+        set({ user: userData });
       },
 
       logout: () => {
         // Clear the token and user data
-        set({ token: null, user: null });
+        set({ token: null, user: null, role: null });
       },
     }),
     {
-      name: "auth-storage", // Name of the storage key
+      name: "auth-storage",
     }
   )
 );
