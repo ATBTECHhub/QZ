@@ -33,6 +33,7 @@ export default {
         footerBg: "url('../src/assets/footerBg.svg')",
         waitlistBg: "url('../src/assets/waitlistBg.svg')",
         testResultBg: "url('../src/assets/line.svg')",
+        profileCircleBg: "url('../src/assets/circleIcon.svg')",
       },
     },
   },

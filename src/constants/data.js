@@ -37,6 +37,14 @@ import markedIcon from "../assets/markedIcon.svg"
 import scoreIcon from "../assets/scoreIcon.svg"
 import roundIcon from "../assets/roundIcon.svg"
 
+import settings from "../assets/settings.svg";
+import friends from "../assets/friends.svg";
+import blog from "../assets/blog.svg";
+import notifications from "../assets/notifictions.svg";
+import line2 from "../assets/line2.svg"
+
+
+
 
 
 
@@ -542,7 +550,7 @@ export const completedTest =[
   
 ];
 
-export const testReslt = [
+export const testResult = [
   {
     icon: roundIcon,
     title: "Total Score:",
@@ -565,5 +573,55 @@ export const testReslt = [
   },
 ];
 
+export const profile =[
+  {
+    icon: settings,
+    title: "Settings",
+  },
+  {
+    icon: friends,
+    title: "Share with Friends" ,
+  },
+  {
+    icon: blog,
+    title: "Blog" ,
+  },
+  {
+    icon: notifications,
+    title: "Notifications",
+  },
+];
+export const editProfile = [
+  {
+    title: "Name",
+    status: "Balogun Adejare",
+    icon: line2,
+  },
+  {
+    title: "Job",
+    status: "Human Resources Manager",
+    icon: line2,
+  },
+  {
+    title: "Email",
+    status: "balogunadejare20@gmail.com",
+    icon: line2,
+  },
+  {
+    title: "Role",
+    status: "Test Taker",
+    icon: line2,
+  },
+  {
+    title: "Test Taker",
+    status: "Abeokuta",
+    icon: line2,
+  },
+  {
+    title: "Phone Number",
+    status: "+234 908 678 1178",
+    icon: line2,
+  },
+];
 
 
