@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 const Login = () => {
   const navigate = useNavigate();
   const setToken = useAuthStore((state) => state.setToken);
-  const user = useAuthStore((state) => state.user);
+  const setUser = useAuthStore((state) => state.setUser);
   const initialValues = {
     email: "",
     password: "",
@@ -24,20 +24,21 @@ const Login = () => {
     try {
       const res = await Axios.post(Request.login, payload);
       console.log(res);
-      if (res.data.token) {
+      if (res.data.token && res.data.firstname) {
         setToken(res.data.token);
-        // After setting the token, check the user's role for navigation
-        if (user?.role === "testTaker") {
+        setUser(res.data.firstname);
+        const role = useAuthStore.getState().role;
+        if (role === "testTaker") {
           navigate("/student-dashboard");
-        } else if (user?.role === "testCreator") {
+        } else if (role === "testCreator") {
           navigate("/instructor-dashboard");
         }
-      }
-      else{
+      } else {
         toast.error(res.message);
       }
     } catch (error) {
-     toast.error(error?.response.data.message);
+      console.log(error)
+      toast.error(error?.response.data.message);
     }
     await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();

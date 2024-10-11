@@ -17,7 +17,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 
 const InstructorBase = () => {
-  const User = useAuthStore((state) => state.user);
+  const user = useAuthStore((state) => state.user);
   // Chart data
   const data = {
     labels: ["Tests awaiting", "Tests completed", "In Progress"],
@@ -57,7 +57,7 @@ const InstructorBase = () => {
   return (
     <section className="pl-[54px] py-[59px] pr-[70px]">
       <div className="flex justify-between">
-        <h1 className="text-xl test-darkPrimary">Welcome Back, Adejare</h1>
+        <h1 className="text-xl test-darkPrimary">Welcome Back, {user}</h1>
         <div className="flex items-center bg-white py-2 px-5 rounded-[23px] gap-2">
           <IoIosSearch />
           <input type="search" className="outline-none bg-transparent" />

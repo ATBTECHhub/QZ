@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { instructorDashboard } from "../constants/data";
 import logo from "../assets/logoThree.svg";
+import useAuthStore from "../store/authStore";
 
 const Sidenav = () => {
   const [openSection, setOpenSection] = useState(null);
@@ -11,6 +12,14 @@ const Sidenav = () => {
   const handleToggle = (index) => {
     // If the clicked section is already open, close it, otherwise set it as the open section
     setOpenSection(openSection === index ? null : index);
+  };
+  const logout = useAuthStore((state) => state.logout);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+
+    navigate("/");
   };
   return (
     <div className="bg-primary !w-[350px] hidden lg:flex flex-col px-8 py-9 border border-[#808080]">
@@ -41,15 +50,29 @@ const Sidenav = () => {
                 )}
               </div>
             ) : (
-              <Link
-                to={item.to}
-                className="flex justify-between items-center gap-[10px] text-white"
-              >
-                <div className="flex items-center gap-[10px]">
-                  <img src={item.icon} alt="" />
-                  <span>{item.text}</span>
-                </div>
-              </Link>
+              <div>
+                {item.text === "Log out" ? (
+                  <button
+                    onClick={handleLogout}
+                    className="flex justify-between items-center gap-[10px] text-white"
+                  >
+                    <div className="flex items-center gap-[10px]">
+                      <img src={item.icon} alt="" />
+                      <span>{item.text}</span>
+                    </div>
+                  </button>
+                ) : (
+                  <Link
+                    to={item.to}
+                    className="flex justify-between items-center gap-[10px] text-white"
+                  >
+                    <div className="flex items-center gap-[10px]">
+                      <img src={item.icon} alt="" />
+                      <span>{item.text}</span>
+                    </div>
+                  </Link>
+                )}
+              </div>
             )}
 
             {item.sublinks && openSection === index && (
@@ -59,7 +82,9 @@ const Sidenav = () => {
                     <Link
                       to={sublink.to}
                       className={`text-white py-[10px] pl-[10px] pr-8 rounded-[10px] ${
-                        location.pathname.startsWith(sublink.to) ? "bg-[#346580B2]" : ""
+                        location.pathname.startsWith(sublink.to)
+                          ? "bg-[#346580B2]"
+                          : ""
                       }`}
                     >
                       {sublink.text}

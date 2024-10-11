@@ -28,7 +28,7 @@ const creatorSignup = () => {
       toast.error(error.response.data.message);
    
     }
-    await new Promise(() => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();
   };
   const {
