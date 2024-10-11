@@ -68,6 +68,10 @@ export const CreateTestSchema = Yup.object().shape({
   instructions: Yup.string().required("Required"),
 });
 
+export const WaitlistSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+});
+
 
 // Validation schema for True/False question
 export const TrueFalseSchema = Yup.object().shape({
@@ -152,4 +156,5 @@ export const AdminiterTestSchema = Yup.object().shape({
 //   .typeError("Points must be a number")
 //   .required("Points is required")
 //   .min(1, "Points cannot be negative"),
+
 

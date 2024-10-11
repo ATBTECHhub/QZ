@@ -17,7 +17,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 
 const InstructorBase = () => {
-  const user = useAuthStore((state) => state.user); 
+  const user = useAuthStore((state) => state.user);
   // Chart data
   const data = {
     labels: ["Tests awaiting", "Tests completed", "In Progress"],
@@ -149,6 +149,7 @@ const InstructorBase = () => {
           </div>
         </div>
       </div>
+      
       <section className="grid lg:grid-cols-[60%_40%] gap-6 rounded-[12px] text-xs">
         <div className="grid gap-5">
           {/* Recently Created Tests */}

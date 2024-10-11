@@ -8,6 +8,10 @@ const Request = {
 
   //group management
   createGroup: "/groups",
+
+  // waitlist
+  waitlist: "/waitlist"
+
   updateGroup: (groupId) => `/groups/${groupId}`,
 
   // TEST MANAGEMENT
@@ -26,5 +30,6 @@ const Request = {
 
   // createQuestion: "/questions",
   // updateQuestion: (questionId) => `/questions/${questionId}`,
+
 };
 export default Request;

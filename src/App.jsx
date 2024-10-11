@@ -19,8 +19,20 @@ import Analytics from "./components/InstructorDashboardPages/Analytics";
 import Report from "./components/InstructorDashboardPages/Report";
 import Results from "./components/InstructorDashboardPages/Results";
 import ManageGroup from "./components/InstructorDashboardPages/ManageGroup";
+
+import TakerDashboard from "./pages/TakerDashboard";
+import TakerBase from "./components/TakerDashboard/TakerBase";
+import AvailableTest from "./components/TakerDashboard/AvailableTest";
+import OngoingTests from "./components/TakerDashboard/OngoingTests";
+import CompletedTests from "./components/TakerDashboard/CompletedTests";
+import TestResult from "./components/TakerDashboard/TestResult";
+import Perfomance from "./components/TakerDashboard/Perfomance";
+import ViewProfile from "./components/TakerDashboard/ViewProfile";
+import EditProfile from "./pages/EditProfile";
+
 import ContinueTest from "./components/InstructorDashboardPages/ContinueTest";
 import ProtectedRoute from "./components/ProtectedRoute";
+
 
 function App() {
   return (
@@ -69,6 +81,18 @@ function App() {
           <Route path="results" element={<Results />} />
           <Route path="reports" element={<Report />} />
           <Route path="analytics" element={<Analytics />} />
+        </Route>
+        {/* test taker routes */}
+        <Route path="/taker-dashboard" element={<TakerDashboard />}>
+          <Route index element={<TakerBase />} />
+          <Route path="test" element={<AvailableTest />} />
+          
+          <Route path="ongoing" element={<OngoingTests />} />
+          <Route path="completed" element={<CompletedTests />} />
+          <Route path="result" element={<TestResult />} />
+          <Route path="performance-analysis" element={<Perfomance />} />
+          <Route path="view-profile" element={<ViewProfile />} />
+          <Route path="edit-profile" element={<EditProfile />} />
         </Route>
       </Routes>
     </>
