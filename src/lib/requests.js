@@ -10,7 +10,7 @@ const Request = {
   createGroup: "/groups",
 
   // waitlist
-  waitlist: "/waitlist"
+  waitlist: "/waitlist",
 
   updateGroup: (groupId) => `/groups/${groupId}`,
 
