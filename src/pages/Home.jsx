@@ -12,10 +12,6 @@ import Login from "./Login";
 
 
 
-
-
-
-
 const Home = () => {
   return (
     <>
@@ -31,6 +27,7 @@ const Home = () => {
       {/* <ForgetPassword/> */}
       <ResetPassword/>
       <Login/>
+  
       
     </>
   );
