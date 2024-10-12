@@ -28,7 +28,10 @@ import CompletedTests from "./components/TakerDashboard/CompletedTests";
 import TestResult from "./components/TakerDashboard/TestResult";
 import Perfomance from "./components/TakerDashboard/Perfomance";
 import ViewProfile from "./components/TakerDashboard/ViewProfile";
-import EditProfile from "./pages/EditProfile";
+import EditProfile from "./components/TakerDashboard/EditProfile";
+import AvailableTest2 from "./components/TakerDashboard/AvailableTest2";
+import TestSubmitted from "./pages/TestSubmitted"
+
 
 import ContinueTest from "./components/InstructorDashboardPages/ContinueTest";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -86,13 +89,15 @@ function App() {
         <Route path="/taker-dashboard" element={<TakerDashboard />}>
           <Route index element={<TakerBase />} />
           <Route path="test" element={<AvailableTest />} />
-          
+          <Route path="available-test" element={<AvailableTest2 />} />
+
           <Route path="ongoing" element={<OngoingTests />} />
           <Route path="completed" element={<CompletedTests />} />
           <Route path="result" element={<TestResult />} />
           <Route path="performance-analysis" element={<Perfomance />} />
           <Route path="view-profile" element={<ViewProfile />} />
           <Route path="edit-profile" element={<EditProfile />} />
+          <Route path="submitted-test" element={<TestSubmitted />} />
         </Route>
       </Routes>
     </>

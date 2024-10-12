@@ -121,6 +121,19 @@ export const AdminiterTestSchema = Yup.object().shape({
     .min(1, "Attempts cannot be less than 1"),
 });
 
+
+export const ResetPasswordSchema = Yup.object().shape({
+  newPassword: Yup.string()
+    .min(5, "Password must be atleast 5 characters long")
+    .required("Required"),
+  confirmPassword: Yup.string()
+    .min(5, "Password must be atleast 5 characters long")
+    .required("Required"),
+});
+
+
+
+
 // Validation schema for 
 
 

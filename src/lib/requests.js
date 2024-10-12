@@ -10,7 +10,7 @@ const Request = {
   createGroup: "/groups",
 
   // waitlist
-  waitlist: "/waitlist"
+  waitlist: "/waitlist",
 
   updateGroup: (groupId) => `/groups/${groupId}`,
 
@@ -26,10 +26,10 @@ const Request = {
   //administer test
   administerTest: (testId) => `/tests/administer/${testId}`,
 
-  // monitorTest: (testId) => `/tests/${testId}/monitor`,
+  // monitorTest: (testId) => /tests/${testId}/monitor,
 
   // createQuestion: "/questions",
-  // updateQuestion: (questionId) => `/questions/${questionId}`,
+  // updateQuestion: (questionId) => /questions/${questionId},
 
 };
-export default Request;
+export default Request;

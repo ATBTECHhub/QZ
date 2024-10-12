@@ -5,13 +5,9 @@ import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer";
 import Ready from "../components/Ready";
 import Testimonial from "../components/Testimonial";
-import TestTakerLogin from "./TestTakerLogin";
-import TestSubmitted from "./TestSubmitted";
-import Anonymous from "./Anonymous";
-import EditProfile from "./EditProfile";
-import Waitlist from "./Waitlist";
-import TakerSidenav from "../components/TakerSidenav";
-import AvailableTest2 from "../components/TakerDashboard/AvailableTest2";
+import ForgetPassword from "./ForgetPassword";
+import ResetPassword from "./ResetPassword";
+import Login from "./Login";
 
 
 
@@ -19,26 +15,20 @@ import AvailableTest2 from "../components/TakerDashboard/AvailableTest2";
 const Home = () => {
   return (
     <>
-      {/* <Navbar />  */}
-      {/* <Hero /> */}
-      {/* <Features /> */}
-      {/* <AboutUs /> */}
-      {/* <Testimonial /> */}
-      {/* <Ready /> */}
-      {/* <Footer /> */}
+      {/* <Navbar /> 
+      <Hero />
+      <Features />
+      <AboutUs />
+      <Testimonial />
+      <Ready />
+      <Footer /> */}
 
 
-      {/* <Waitlist /> */}
-      <AvailableTest2/>
-      {/* <TestTakerLogin /> */}
-      {/* <TestSubmitted /> */}
-      {/* <Anonymous/> */}
-      {/* <EditProfile/> */}
-      {/* <TakerSidenav/> */}
-
-
-
-
+      {/* <ForgetPassword/> */}
+      <ResetPassword/>
+      <Login/>
+  
+      
     </>
   );
 };

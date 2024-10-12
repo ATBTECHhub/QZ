@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { testReslt } from '../../constants/data';
+import {  testResult } from '../../constants/data';
 
 const TestResult = () => {
   return (
@@ -32,7 +32,7 @@ const TestResult = () => {
       </p>
       <div className=" bgcover bgcenter hfull w1 bgtestResultBg pb-5">
         <div className="grid gap-3">
-          {testReslt.map((test, index) => (
+          {testResult.map((test, index) => (
             <div key={index} className="flex gap-2">
               <img src={test.icon} alt="" className="gap-10" />
               <p>{test.title}</p>
