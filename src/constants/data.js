@@ -184,7 +184,7 @@ export const instructorDashboard = [
     ],
   },
   {
-    text: "Log out ",
+    text: "Log out",
     to: "/instructor-dashboard",
     icon: logoutIcon,
   },
@@ -625,3 +625,9 @@ export const editProfile = [
 ];
 
 
+export const options = [
+  { label: "A", placeholder: "Enter options A" },
+  { label: "B", placeholder: "Enter options B" },
+  { label: "C", placeholder: "Enter options C" },
+  { label: "D", placeholder: "Enter options D" },
+];

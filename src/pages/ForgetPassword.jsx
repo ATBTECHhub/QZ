@@ -6,7 +6,7 @@ const ForgetPassword = () => {
   return (
     <section className=" font-fustat bg-[#f2f1ed]">
       <Navbar />
-      <div className=" mt- gap-1 container">
+      <div className=" pt-24 gap-1 container">
         <div className="grid lg:grid-cols-[40%_40%] container justify-center items-center  m-10 ">
           <img
             src={padlock}
