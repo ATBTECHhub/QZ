@@ -1,6 +1,9 @@
 const Request = {
   signup: "/auths/register",
   login: "/auths/login",
+  forgotPassword: "/auths/forgot-password",
+  resetPassword: "/auths/reset-password",
+
 
   // instructor dashboard routes
   createUser: "/users",
@@ -26,10 +29,9 @@ const Request = {
   //administer test
   administerTest: (testId) => `/tests/administer/${testId}`,
 
-  // monitorTest: (testId) => `/tests/${testId}/monitor`,
+  // monitorTest: (testId) => /tests/${testId}/monitor,
 
   // createQuestion: "/questions",
-  // updateQuestion: (questionId) => `/questions/${questionId}`,
-
+  // updateQuestion: (questionId) => /questions/${questionId},
 };
-export default Request;
+export default Request;

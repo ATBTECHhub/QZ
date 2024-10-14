@@ -1,63 +1,94 @@
-import { Link } from "react-router-dom";
-import padlock from "../assets/padlock.svg";
 import Navbar from "../components/Navbar";
+import AuthFooter from "../components/AuthFooter";
+import InputField from "../components/InputField";
+import Request from "../lib/requests";
+import { Axios } from "../config";
+import { toast } from "react-toastify";
+import { WaitlistSchema } from "../schemas";
+import { useFormik } from "formik";
+import padlock from "../assets/padlock.svg";
+import Modal from "../components/Modal";
+import { useState } from "react";
 
 const ForgetPassword = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const initialValues = {
+    email: "",
+  };
+  const onSubmit = async (payload, actions) => {
+    try {
+      const res = await Axios.post(Request.forgotPassword, payload);
+      console.log(res);
+      if (res.data.message === "Reset password link sent") {
+        setIsOpen(true);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    actions.resetForm();
+  };
+  const {
+    handleChange,
+    values,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+    errors,
+    touched,
+  } = useFormik({
+    initialValues,
+    validationSchema: WaitlistSchema,
+    onSubmit,
+  });
+  const getError = (key) => {
+    return touched[key] && errors[key];
+  };
   return (
-    <section className=" font-fustat bg-[#f2f1ed]">
+    <>
       <Navbar />
-      <div className=" mt- gap-1 container">
-        <div className="grid lg:grid-cols-[40%_40%] container justify-center items-center  m-10 ">
-          <img
-            src={padlock}
-            alt="padlock"
-            className=" items-center hidden lg:block bg-white h-[347px] w-[498px]"
-          />
-
-          <div className="grid items-center  justify-center bg-white h-[347px]">
-            <div className="w-full max-w-md p-4 bg-white ">
-              <h2 className="text-2xl font-bold  text-center mb-8">
-                Forgot Password
-              </h2>
-              <form className="">
-                <div className="mb-4 ">
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
-                    Email address
-                  </label>
-                  <input
-                    className=" border rounded w-full py-2 px-3 bg-[#FAF7ED]  "
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div className="flex items-center justify-center mt-8">
-                  <button
-                    className="bg-[#104573] hover:bg-[#0b304f] text-white font-bold py-2 px-4 rounded "
-                    type="submit"
-                  >
-                    RESET
-                  </button>
-                </div>
-              </form>
-            </div>
+      <section className="bg-[#FAF7ED99]">
+        <div className="grid lg:grid-cols-[30%_30%] sm:justify-center pt-[180px] pb-[100px]">
+          <div className="bg-white hidden lg:block ">
+            <img
+              src={padlock}
+              alt="padlock"
+              className="w-full h-full object-cover"
+            />
           </div>
-        </div>
 
-        <div className="flex text-[13px] lg:gap-[452px] gap-10 mt-16 mb-16 font-fustat max-h-none lg:h-16 container ">
-          <h6>
-            QZ Platform - Licensed by the National Authority of Technology
-            Development, Nigeria.
-          </h6>
-          <div className="flex gap-4 lg:gap-20">
-            <Link to="policy">
-              <p>Privacy policy</p>
-            </Link>
-            <Link to="terms and conditions">
-              <p>Terms and conditions</p>
-            </Link>
-          </div>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col justify-center bg-white px-5 sm:px-[58px] lg:px-[30px] xl:px-[58px] pt-[38px]"
+          >
+            <h2 className="text-2xl lg:text-xl font-bold mb-8">
+              Forgot Password
+            </h2>
+            <InputField
+              label="Email address"
+              name="email"
+              type="email"
+              placeholder="Enter Email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={getError("email")}
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-primary mb-[100px] mt-7 text-white font-bold py-2 px-4 sm:w-[400px] lg:w-full rounded-[10px] disabled:opacity-75 disabled:cursor-not-allowed"
+            >
+              RESET
+            </button>
+          </form>
         </div>
-      </div>
-    </section>
+        <AuthFooter />
+      </section>
+      {isOpen && (
+        <Modal cta="Back" text="Check your mail box for next step" path="/" />
+      )}
+    </>
   );
 };
 

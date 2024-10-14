@@ -28,17 +28,15 @@ export const LoginSchema = Yup.object().shape({
 export const TestTakerLoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   accesscode: Yup.string()
-  .min(5, "Access code must be atleast 5 characters long")
-  .required("Required"),
+    .min(5, "Access code must be atleast 5 characters long")
+    .required("Required"),
 });
 
 export const CreateUserSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
   // lname: Yup.string().required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
-
 });
-
 
 export const ManageGroupSchema = Yup.object().shape({
   groupName: Yup.string().required("Required"),
@@ -60,7 +58,6 @@ export const ManageGroupSchema = Yup.object().shape({
     ),
 });
 
-
 export const CreateTestSchema = Yup.object().shape({
   testName: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
@@ -71,7 +68,6 @@ export const CreateTestSchema = Yup.object().shape({
 export const WaitlistSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
-
 
 // Validation schema for True/False question
 export const TrueFalseSchema = Yup.object().shape({
@@ -91,16 +87,16 @@ export const MultipleChoiceSchema = Yup.object().shape({
   questionType: Yup.string()
     .oneOf(["multipleChoice"], "Invalid type")
     .required("Required"),
-  questionOptions: Yup.array().of(
-    Yup.object({
-      optionText: Yup.string().required("Option text is required"),
-      isCorrect: Yup.boolean(),
-    })
-  ).min(2, "At least two options are required for multiple choice"),
+  questionOptions: Yup.array()
+    .of(
+      Yup.object({
+        optionText: Yup.string().required("Option text is required"),
+        isCorrect: Yup.boolean(),
+      })
+    )
+    .min(2, "At least two options are required for multiple choice"),
   points: Yup.number().min(1, "Points must be at least 1").required(),
 });
-
-
 
 export const AdminiterTestSchema = Yup.object().shape({
   startDate: Yup.date().required("Start date is required"),
@@ -121,15 +117,16 @@ export const AdminiterTestSchema = Yup.object().shape({
     .min(1, "Attempts cannot be less than 1"),
 });
 
-// Validation schema for 
+export const ResetPasswordSchema = Yup.object().shape({
+  newPassword: Yup.string()
+    .min(5, "Password must be at least 5 characters long")
+    .required("Required"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
+    .required("Required"),
+});
 
-
-
-
-
-
-
-
+// Validation schema for
 
 /* export const CreateQuestionSchema = Yup.object().shape({
   questionText: Yup.string().required("Required"),
@@ -143,18 +140,10 @@ export const AdminiterTestSchema = Yup.object().shape({
     })
   ),
   points: Yup.number().min(1, "Points must be at least 1").required(),
-}); */ 
-
-
-
-
-
-
+}); */
 
 // points: Yup.string().min(1, "Points must be at least 1").required("Required"),
 // points: Yup.number()
 //   .typeError("Points must be a number")
 //   .required("Points is required")
 //   .min(1, "Points cannot be negative"),
-
-

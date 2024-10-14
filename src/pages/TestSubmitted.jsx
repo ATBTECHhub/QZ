@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import submittedIcon from "../assets/submittedIcon.svg";
 import Navbar from "../components/Navbar";
 
+
 const SubmittedTest = () => {
   return (
     <sectio className="font-fustat bg-light container ">
