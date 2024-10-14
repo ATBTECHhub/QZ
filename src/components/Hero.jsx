@@ -10,8 +10,8 @@ const Hero = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true, 
-    // autoplaySpeed: 2000,
+    autoplay: true, 
+    autoplaySpeed: 2000,
   };
   return (
     <section className="bg-light pt-[114px] pb-[62px]">

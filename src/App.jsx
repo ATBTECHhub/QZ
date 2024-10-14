@@ -35,6 +35,7 @@ import TestSubmitted from "./pages/TestSubmitted"
 
 import ContinueTest from "./components/InstructorDashboardPages/ContinueTest";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ResetPassword from "./pages/ResetPassword";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/test-taker-signup" element={<TakerSignup />} />
         <Route path="/test-creator-signup" element={<CreatorSignup />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           path="/instructor-dashboard"
           element={

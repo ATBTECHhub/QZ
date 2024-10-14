@@ -50,7 +50,7 @@ const creatorSignup = () => {
   return (
     <>
       <Navbar />
-      <section className="font-fustat bg-[#FAF7ED99]">
+      <section className="bg-[#FAF7ED99]">
         <div className="grid lg:grid-cols-[30%_30%] justify-center pt-[180px] pb-[100px]">
           <div>
             <img

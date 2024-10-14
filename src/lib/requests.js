@@ -1,6 +1,9 @@
 const Request = {
   signup: "/auths/register",
   login: "/auths/login",
+  forgotPassword: "/auths/forgot-password",
+  resetPassword: "/auths/reset-password",
+
 
   // instructor dashboard routes
   createUser: "/users",
@@ -30,6 +33,5 @@ const Request = {
 
   // createQuestion: "/questions",
   // updateQuestion: (questionId) => /questions/${questionId},
-
 };
 export default Request;

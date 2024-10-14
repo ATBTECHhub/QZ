@@ -5,30 +5,17 @@ import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer";
 import Ready from "../components/Ready";
 import Testimonial from "../components/Testimonial";
-import ForgetPassword from "./ForgetPassword";
-import ResetPassword from "./ResetPassword";
-import Login from "./Login";
-
-
-
 
 const Home = () => {
   return (
     <>
-      {/* <Navbar /> 
+      <Navbar />
       <Hero />
       <Features />
       <AboutUs />
       <Testimonial />
       <Ready />
-      <Footer /> */}
-
-
-      {/* <ForgetPassword/> */}
-      <ResetPassword/>
-      <Login/>
-  
-      
+      <Footer />
     </>
   );
 };
