@@ -22,15 +22,15 @@ const SubmittedTest = () => {
           </div>
 
           <div className="flex items-center  justify-center gap-6 container">
-            <Link to="home">
+            <Link to="/taker-dashboard">
               <button className=" bg-white hover:bg-[#b8c5d0] text-[#103773] text-center font-bold py-2 px-2 border-2 rounded-lg h-10 w-40  ">
                 Go Home
               </button>
             </Link>
             <Link to="view result">
-            <button className="bg-[#104573] hover:bg-[#0b3d68] text-white text-center font-bold py-2 px-2 rounded-lg h-10 w-40  ">
-              View Result
-            </button>
+              <button className="bg-[#104573] hover:bg-[#0b3d68] text-white text-center font-bold py-2 px-2 rounded-lg h-10 w-40  ">
+                View Result
+              </button>
             </Link>
           </div>
         </div>
@@ -42,10 +42,10 @@ const SubmittedTest = () => {
         </h6>
         <div className="flex gap-4 lg:gap-20">
           <Link to="policy">
-          <p>Privacy policy</p>
+            <p>Privacy policy</p>
           </Link>
           <Link to="terms and conditions">
-          <p>Terms and conditions</p>
+            <p>Terms and conditions</p>
           </Link>
         </div>
       </div>

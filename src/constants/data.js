@@ -532,6 +532,53 @@ word1: "Due Date:",
 word2: "24th Aug 2024",
 },
 ];
+
+export const availableTest2 = [
+  { icon: dateIcon, word1: "Due Date:", word2: "24th Aug 2024" },
+];
+export const availableTestTwo = [
+  {
+    icon: roundIcon,
+    title: "Total Questions:",
+    status: "25",
+  },
+  {
+    icon: roundIcon,
+    title: "Time Limit:",
+    status: "60 minutes",
+  },
+  {
+    icon: roundIcon,
+    title: "Passing Score:",
+    status: "70%",
+  },
+  {
+    icon: roundIcon,
+    title: "Number Of Attempts Allowed:",
+    status: "1",
+  },
+  {
+    icon: roundIcon,
+    title: "Test Format:",
+    status: "Multiple Choice, True/False, Short Answer",
+  },
+  {
+    icon: roundIcon,
+    title: "Navigation:",
+    status: "“Next” and “Previous” Buttons ",
+  },
+  {
+    icon: roundIcon,
+    title: "Auto-Save:",
+    status: "Answers Saved Automatically",
+  },
+  {
+    icon: roundIcon,
+    title: "Total Questions:",
+    status: "Click Submit Test to Finish",
+  },
+];
+
 export const completedTest =[
   {icon:  dateIcon,
    word1:"Date Completed :",

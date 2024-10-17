@@ -115,8 +115,8 @@ const TestResult = () => {
       </div>
       <div className="flex justify-end py-12">
         <Link to="/taker-dashboard/performance-analysis">
-          <button className="text-[#FFFFFF] bg-primary font-extrabold border py-1 px-2 rounded-xl w-20  hover:bg-primary">
-            SUBMIT
+          <button className="text-[#FFFFFF] bg-primary font-extrabold border py-3 px-2 rounded-xl w-36  hover:bg-primary">
+            Go to Analytics
           </button>
         </Link>
       </div>

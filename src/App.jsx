@@ -92,6 +92,7 @@ function App() {
           <Route path="available-test" element={<AvailableTest2 />} />
 
           <Route path="ongoing" element={<OngoingTests />} />
+          <Route path="test-submitted" element={<TestSubmitted />} />
           <Route path="completed" element={<CompletedTests />} />
           <Route path="result" element={<TestResult />} />
           <Route path="performance-analysis" element={<Perfomance />} />

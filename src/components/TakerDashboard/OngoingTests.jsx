@@ -168,7 +168,7 @@ const OngoingTests = () => {
       </div>
 
       <div className="flex justify-end">
-        <Link to="/src/pages/submitted test">
+        <Link to="/taker-dashboard/test-submitted">
           <button className="text-[#FFFFFF] bg-submit font-extrabold border py-1 px-2 rounded-xl w-20  hover:bg-primary">
             SUBMIT
           </button>
