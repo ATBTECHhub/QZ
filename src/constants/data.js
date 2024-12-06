@@ -251,19 +251,27 @@ export const creatorUpcomingTests = [
 ];
 
 export const creatorQuickLinks = [
-  { title: "Create Test", icon: quicklinkCreateTest, link: "/create-test" },
-  { title: "Reports", icon: quicklinkReport, link: "/reports" },
-  { title: "Analytics", icon: quicklinkAnalytics, link: "/analytics" },
+  {
+    title: "Create Test",
+    icon: quicklinkCreateTest,
+    path: "/instructor-dashboard/create-test",
+  },
+  { title: "Reports", icon: quicklinkReport, path: "/reports" },
+  { title: "Analytics", icon: quicklinkAnalytics, path: "/analytics" },
   {
     title: "Scheduled Test",
     icon: quicklinkScheduledTest,
-    link: "/scheduled-test",
+    path: "/scheduled-test",
   },
-  { title: "Create User", icon: quicklinkCreateUser, link: "/create-user" },
+  {
+    title: "Create User",
+    icon: quicklinkCreateUser,
+    path: "/instructor-dashboard/create-user",
+  },
   {
     title: "Ongoing Tests",
     icon: quicklinkOngoingTest,
-    link: "/ongoing-tests",
+    path: "/ongoing-tests",
   },
 ];
 
@@ -630,4 +638,28 @@ export const options = [
   { label: "B", placeholder: "Enter options B" },
   { label: "C", placeholder: "Enter options C" },
   { label: "D", placeholder: "Enter options D" },
+];
+
+
+export const faqData = [
+  {
+    question: "Lorem ipsum dolor sit amet consectetur.",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur. Odio maecenas ipsum in dignissim feugiat suscipit maecenas senectus quis. Hendrerit vestibulum porta sed nunc porttitor. In euismod nunc in proin vitae. Id sem blandit viverra risus accumsan vel.",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet consectetur.",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur. Odio maecenas ipsum in dignissim feugiat suscipit maecenas senectus quis. Hendrerit vestibulum porta sed nunc porttitor. In euismod nunc in proin vitae. Id sem blandit viverra risus accumsan vel.",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet consectetur.",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur. Odio maecenas ipsum in dignissim feugiat suscipit maecenas senectus quis. Hendrerit vestibulum porta sed nunc porttitor. In euismod nunc in proin vitae. Id sem blandit viverra risus accumsan vel.",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet consectetur.",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur. Odio maecenas ipsum in dignissim feugiat suscipit maecenas senectus quis. Hendrerit vestibulum porta sed nunc porttitor. In euismod nunc in proin vitae. Id sem blandit viverra risus accumsan vel.",
+  },
 ];

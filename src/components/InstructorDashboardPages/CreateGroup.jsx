@@ -65,6 +65,7 @@ const CreateGroup = () => {
         }
       }
     } catch (error) {
+      toast.error(error.message);
       console.log(error);
     }
     await new Promise((resolve) => setTimeout(resolve, 1000));

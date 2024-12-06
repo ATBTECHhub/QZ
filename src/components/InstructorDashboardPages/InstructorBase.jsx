@@ -149,7 +149,7 @@ const InstructorBase = () => {
           </div>
         </div>
       </div>
-      
+
       <section className="grid lg:grid-cols-[60%_40%] gap-6 rounded-[12px] text-xs">
         <div className="grid gap-5">
           {/* Recently Created Tests */}
@@ -234,10 +234,10 @@ const InstructorBase = () => {
             {creatorQuickLinks.map((link, index) => (
               <div key={index} className="rounded-[15px] h-[95px]">
                 <div className="bg-[#10357366] flex justify-center py-4 rounded-t-[15px]">
-                  <img src={link.icon} alt="" className="w-ful" />
+                  <img src={link.icon} alt="icon" />
                 </div>
                 <Link
-                  to="/"
+                  to={link.path}
                   className="text-[11px] bg-[#E6E6E9] text-center block p-[5px] rounded-br-[15px] hover:text-primary"
                 >
                   {link.title}
