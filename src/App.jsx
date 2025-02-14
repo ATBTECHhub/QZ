@@ -49,7 +49,11 @@ function App() {
         <Route path="/test-taker-signup" element={<TakerSignup />} />
         <Route path="/test-creator-signup" element={<CreatorSignup />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        {/* <Route path="/reset-password" element={<ResetPassword />} /> */}
+        <Route
+          path="/api/auths/change-password/:token"
+          element={<ResetPassword />}
+        />
         <Route path="/faq" element={<Faq />} />
         <Route
           path="/instructor-dashboard"
@@ -78,7 +82,7 @@ function App() {
           {/* Nestedroutes under create test page */}
           <Route path="create-test">
             <Route index element={<CreateTest />} />
-            <Route path="continue" element={<ContinueTest />} />
+            <Route path=":testId/questions" element={<ContinueTest />} />
             <Route path=":testId" element={<CreateTest />} />
           </Route>
           <Route path="manage-test" element={<ManageTest />} />

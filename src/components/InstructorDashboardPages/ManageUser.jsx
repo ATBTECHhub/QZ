@@ -31,11 +31,17 @@ const ManageUser = () => {
   const getUsers = async () => {
     try {
       const res = await Axios.get(Request.createUser);
+      console.log(res);
       setUsers(res.data);
     } catch (error) {
-      toast.error(
-        error?.message || "An error occurred, please try again later."
-      );
+      if (
+        error.response.data.message !=
+        "No test takers found for this Test Creator"
+      ) {
+        toast.error(
+          error?.message || "An error occurred, please try again later."
+        );
+      }
     } finally {
       setLoading(false);
     }
