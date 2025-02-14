@@ -51,7 +51,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgetPassword />} />
         {/* <Route path="/reset-password" element={<ResetPassword />} /> */}
         <Route
-          path="/api/auths/change-password/:token"
+          path="/change-password/:token"
           element={<ResetPassword />}
         />
         <Route path="/faq" element={<Faq />} />
