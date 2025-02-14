@@ -37,6 +37,7 @@ import ContinueTest from "./components/InstructorDashboardPages/ContinueTest";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ResetPassword from "./pages/ResetPassword";
 import Faq from "./pages/Faq";
+import NotFound from "./pages/NotFound";
 
 
 function App() {
@@ -50,11 +51,9 @@ function App() {
         <Route path="/test-creator-signup" element={<CreatorSignup />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         {/* <Route path="/reset-password" element={<ResetPassword />} /> */}
-        <Route
-          path="/change-password/:token"
-          element={<ResetPassword />}
-        />
+        <Route path="/change-password/:token" element={<ResetPassword />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="*" element={<NotFound />} />
         <Route
           path="/instructor-dashboard"
           element={
