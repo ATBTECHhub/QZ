@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Request from "../../lib/requests";
 import { useFormik } from "formik";
@@ -11,13 +11,17 @@ import TrueFalse from "./TrueFalse";
 import { MultipleChoiceSchema, TrueFalseSchema } from "../../schemas";
 import Multichoice from "./Multichoice";
 import { toast } from "react-toastify";
+import useAuthStore from "../../store/authStore";
 const ContinueTest = () => {
   const [activeTab, setActiveTab] = useState("Create Questions");
   const navigate = useNavigate();
   const testIds = useTestStore((state) => state.testIds);
   const tabs = ["Dashboard", "Create Test", "Create Questions"];
-  
-
+  const user = useAuthStore((state) => state.user);
+  const token = useAuthStore((state) => state.token);
+  useEffect(() => {
+    console.log(token);
+  }, []);
   // const handleTabClick = (tab) => {
   //   setActiveTab(tab);
   //   if (tab === "Dashboard") {
@@ -50,6 +54,7 @@ const ContinueTest = () => {
     questionAnswers: [],
     points: 0,
     randomizeAnswers: true,
+    createdBy: user,
   };
   const onSubmit = async (payload, actions) => {
     const {
@@ -59,6 +64,7 @@ const ContinueTest = () => {
       questionAnswers,
       points,
       randomizeAnswers,
+      createdBy,
     } = payload;
     let formattedPayload = {};
     if (questionType === "multipleChoice") {
@@ -68,6 +74,7 @@ const ContinueTest = () => {
         questionOptions,
         points,
         randomizeAnswers,
+        createdBy,
       };
     } else if (questionType === "TrueFalse") {
       formattedPayload = {

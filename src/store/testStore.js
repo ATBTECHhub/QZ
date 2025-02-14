@@ -1,24 +1,22 @@
-import create from "zustand";
+import {create} from "zustand";
 import { persist } from "zustand/middleware";
 
 const useTestStore = create(
   persist(
     (set) => ({
-      testIds: [], // Array to store multiple test IDs
+      testId: null, // Store only one test ID
 
-      // Add a new test ID to the array
-      addTestId: (id) =>
-        set((state) => ({
-          testIds: [...state.testIds, id],
-        })),
+      // Set a new test ID
+      setTestId: (id) => set({ testId: id }),
 
-      // Clear all test IDs (optional for cleanup purposes)
-      clearTestIds: () => set({ testIds: [] }),
+      // Clear the test ID (optional for cleanup)
+      clearTestId: () => set({ testId: null }),
     }),
     {
-      name: "test-storage", // Key name in localStorage
+      name: "test-storage", // Key for localStorage persistence
     }
   )
 );
 
 export default useTestStore;
+

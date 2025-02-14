@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { jwtDecode } from "jwt-decode";
 
@@ -13,10 +13,11 @@ const useAuthStore = create(
         set({ token });
         // Decode JWT token to get user role
         const decoded = jwtDecode(token);
-        const userRole = decoded?.role; 
+        const userRole = decoded?.role;
         set({ role: userRole });
 
         console.log("User Role:", userRole);
+        
       },
       setUser: (userData) => {
         set({ user: userData });

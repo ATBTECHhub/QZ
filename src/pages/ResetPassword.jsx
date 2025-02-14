@@ -9,8 +9,11 @@ import Request from "../lib/requests";
 import { useState } from "react";
 import AuthFooter from "../components/AuthFooter";
 import Modal from "../components/Modal";
+import { useParams } from "react-router-dom";
 
 const ResetPassword = () => {
+  const { token } = useParams(); // Get token from the URL
+  console.log("Token from URL:", token); // Debugging, remove after testing
   const [isOpen, setIsOpen] = useState(false);
   const initialValues = {
     newPassword: "",
@@ -18,7 +21,7 @@ const ResetPassword = () => {
   };
   const onSubmit = async (payload, actions) => {
     try {
-      const res = await Axios.post(Request.resetPassword, payload);
+      const res = await Axios.post(`/auths/change-password/${token}`, payload);
       console.log(res);
       setIsOpen(true);
     } catch (error) {
