@@ -25,7 +25,7 @@ const Hero = () => {
                 </div>
                 <div className="lg:order-1 flex-1">
                   <h1 className="text-[40px] sm:text-[60px] font-extrabold text-primary">
-                    Revolutionize your exams with ease
+                    Revolutionize your exams with easee
                   </h1>
                   <p className="text-[24px] font-bold text-dark mb-[34px]">
                     Our platform simplifies exam creation, management and
