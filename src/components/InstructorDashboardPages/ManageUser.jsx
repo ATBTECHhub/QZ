@@ -10,12 +10,16 @@ import Request from "../../lib/requests";
 import { toast } from "react-toastify";
 import { Axios } from "../../config";
 import DateFormatter from "../../utils/DateFormatter";
+import ReactPaginate from "react-paginate";
+
 const ManageUser = () => {
   const [activeTab, setActiveTab] = useState("Manage User");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const tabs = ["Dashboard", "Create User", "Manage User"];
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5;
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     if (tab === "Dashboard") {
@@ -71,6 +75,15 @@ const ManageUser = () => {
       );
     }
   };
+  // Pagination logic
+  const offset = currentPage * itemsPerPage;
+  const currentItems = filteredUsers.slice(offset, offset + itemsPerPage);
+  const pageCount = Math.ceil(filteredUsers.length / itemsPerPage);
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
   return (
     <div className="pl-[54px] py-[59px]">
       <h1 className="font-semibold text-[32px] font-fustat leading-[45px]">
@@ -128,7 +141,7 @@ const ManageUser = () => {
               </p>
             )}
             <div>
-              {filteredUsers.map((user, i) => (
+              {currentItems.map((user, i) => (
                 <div
                   key={i}
                   className="pb-10 px-5 pt-[17px] bg-white rounded-[12px] mb-5"
@@ -171,6 +184,30 @@ const ManageUser = () => {
                   </div>
                 </div>
               ))}
+              <div className="flex justify-center mt-6">
+                <ReactPaginate
+                  previousLabel={"←"}
+                  nextLabel={"→"}
+                  breakLabel={"..."}
+                  pageCount={pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={3}
+                  onPageChange={handlePageClick}
+                  containerClassName={"flex space-x-2"}
+                  activeClassName={"text-white bg-primary px-3 py-1 rounded"}
+                  pageClassName={
+                    "px-3 py-1 border border-gray-300 rounded cursor-pointer"
+                  }
+                  previousClassName={
+                    "px-3 py-1 border border-gray-300 rounded cursor-pointer"
+                  }
+                  nextClassName={
+                    "px-3 py-1 border border-gray-300 rounded cursor-pointer"
+                  }
+                  breakClassName={"px-3 py-1 border border-gray-300 rounded"}
+                  disabledClassName={"opacity-50 cursor-not-allowed"}
+                />
+              </div>
               {users.length > 0 && (
                 <div className="text-2xl font-medium font-rubik flex gap-[39px] items-center pt-5">
                   <button className="text-white bg-primary py-3 rounded-lg w-[187px] whitespace-nowrap">

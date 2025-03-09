@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import useUserStore from "../../store/userStore";
 import { useParams } from "react-router-dom";
 
+
 const CreateUser = () => {
   const { userId } = useParams();
   const [activeTab, setActiveTab] = useState("Create User");
@@ -72,7 +73,7 @@ const CreateUser = () => {
       }
       console.log(res);
       if (res.data.message === "User Successfully Created") {
-        toast(res.data.message);
+        toast.success(res.data.message);
         setUserData({
           email: payload.email,
           fullName: payload.name,
