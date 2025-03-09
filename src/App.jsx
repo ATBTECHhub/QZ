@@ -45,7 +45,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Waitlist />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/test-taker-signup" element={<TakerSignup />} />
@@ -55,7 +56,6 @@ function App() {
         <Route path="/change-password/:token" element={<ResetPassword />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/waitlist" element={<Waitlist />} />
 
         <Route
           path="/instructor-dashboard"

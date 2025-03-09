@@ -10,12 +10,15 @@ import Request from "../../lib/requests";
 import { Axios } from "../../config";
 import { toast } from "react-toastify";
 import DateFormatter from "../../utils/DateFormatter";
+import ReactPaginate from "react-paginate";
 const ManageTest = () => {
   const [activeTab, setActiveTab] = useState("Manage Test");
   const tabs = ["Dashboard", "Create Test", "Manage Test"];
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5;
   const tabRoutes = {
     Dashboard: "/instructor-dashboard",
     "Create Test": "/instructor-dashboard/create-test",
@@ -73,7 +76,14 @@ const ManageTest = () => {
       console.log(error);
     }
   };
+  // Pagination 
+  const offset = currentPage * itemsPerPage;
+  const currentTests = filteredTests.slice(offset, offset + itemsPerPage);
+  const pageCount = Math.ceil(filteredTests.length / itemsPerPage);
 
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
   return (
     <section className="pl-[80px] pt-[92px] pb-[59px]">
       <h1 className="font-bold text-2xl font-fustat leading-[34px] text-darkPrimary">
@@ -131,7 +141,7 @@ const ManageTest = () => {
               </p>
             )}
             <div>
-              {filteredTests.map((test, i) => (
+              {currentTests.map((test, i) => (
                 <div key={i} className="bg-[#FAF7ED99] py-8 px-7 mb-8 mt-4">
                   <div className="flex justify-between">
                     <h3 className="text-darkPrimary text-xl font-extrabold leading-7">
@@ -177,6 +187,30 @@ const ManageTest = () => {
                   </div>
                 </div>
               ))}
+              <div className="flex justify-center my-6">
+                <ReactPaginate
+                  previousLabel={"←"}
+                  nextLabel={"→"}
+                  breakLabel={"..."}
+                  pageCount={pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={3}
+                  onPageChange={handlePageClick}
+                  containerClassName={"flex space-x-2"}
+                  activeClassName={"text-white bg-primary px-3 py-1 rounded"}
+                  pageClassName={
+                    "px-3 py-1 border border-gray-300 rounded cursor-pointer"
+                  }
+                  previousClassName={
+                    "px-3 py-1 border border-gray-300 rounded cursor-pointer"
+                  }
+                  nextClassName={
+                    "px-3 py-1 border border-gray-300 rounded cursor-pointer"
+                  }
+                  breakClassName={"px-3 py-1 border border-gray-300 rounded"}
+                  disabledClassName={"opacity-50 cursor-not-allowed"}
+                />
+              </div>
               {tests.length > 0 && (
                 <Link
                   to="/instructor-dashboard/create-test"
