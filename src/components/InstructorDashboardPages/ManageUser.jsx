@@ -75,7 +75,7 @@ const ManageUser = () => {
       );
     }
   };
-  // Pagination logic
+  // Pagination 
   const offset = currentPage * itemsPerPage;
   const currentItems = filteredUsers.slice(offset, offset + itemsPerPage);
   const pageCount = Math.ceil(filteredUsers.length / itemsPerPage);
@@ -184,7 +184,7 @@ const ManageUser = () => {
                   </div>
                 </div>
               ))}
-              <div className="flex justify-center mt-6">
+              <div className="flex justify-center my-6">
                 <ReactPaginate
                   previousLabel={"←"}
                   nextLabel={"→"}
