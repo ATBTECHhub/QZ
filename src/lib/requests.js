@@ -2,6 +2,7 @@ const Request = {
   signup: "/auths/register",
   login: "/auths/login",
   forgotPassword: "/auths/forgot-password",
+  waitlist: "/waitlist",
   // resetPassword: "/auths/change-password/:token",
 
   // instructor dashboard routes

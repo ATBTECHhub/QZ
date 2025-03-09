@@ -38,6 +38,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ResetPassword from "./pages/ResetPassword";
 import Faq from "./pages/Faq";
 import NotFound from "./pages/NotFound";
+import Waitlist from "./pages/Waitlist";
 
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
         <Route path="/change-password/:token" element={<ResetPassword />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/waitlist" element={<Waitlist />} />
+
         <Route
           path="/instructor-dashboard"
           element={
