@@ -11,18 +11,15 @@ export default {
         dark: "rgba(35, 31, 32, 0.80)",
         primaryBg: "rgba(16, 69, 115, 0.90)",
         btnDashboard: "rgba(52, 101, 128, 0.70)",
-         submit: "rgba(16, 53, 115, 0.40)",
+        submit: "rgba(16, 53, 115, 0.40)",
         success: "#008000",
       
-    
       },
       boxShadow: {
         btnShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.12)",
         cardShadow: " 0px 4px 30px 0px rgba(0, 0, 0, 0.10)",
         formShadow: "0px 4px 28.3px 3px #00000012",
         tableShadow: " 0px 4px 28.3px 3px rgba(0, 0, 0, 0.07)",
-        
-        
       },
       fontFamily: {
         pop: '"Poppins", sans-serif',
@@ -40,3 +37,4 @@ export default {
   },
   plugins: [],
 };
+

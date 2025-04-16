@@ -43,7 +43,7 @@ const TakerBase = () => {
   return (
     <section className="pl-[54px] py-[59px] pr-[70px]">
       <div className="grid md:flex  justify-between gap-3 lg:gap-64 ">
-        <h1 className="text-xl test-darkPrimary">Welcome Back, James</h1>
+        <h1 className="text-xl text-darkPrimary">Welcome Back, James</h1>
         <div className="flex gap-3 lg:gap-14">
           <div className="flex items-center bg-white py-2 px-5 rounded-[23px] gap-2">
             <IoIosSearch />

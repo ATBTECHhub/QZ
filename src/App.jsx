@@ -50,9 +50,9 @@ function App() {
         <Route
           path="/instructor-dashboard"
           element={
-            <ProtectedRoute>
-              <InstructorDashboard />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <InstructorDashboard />
+            // </ProtectedRoute>
           }
         >
           <Route index element={<InstructorBase />} />

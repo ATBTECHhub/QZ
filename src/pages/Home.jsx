@@ -5,8 +5,9 @@ import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer";
 import Ready from "../components/Ready";
 import Testimonial from "../components/Testimonial";
-import TestTakerLogin from "./TestTakerLogin";
-import Login from "./Login";
+// import TestTakerLogin from "./TestTakerLogin";
+// import Login from "./Login"
+// import Waitlist from "../pages/Waitlist";
 
 
 
@@ -21,8 +22,10 @@ const Home = () => {
       <Testimonial />
       <Ready />
       <Footer />
-      <TestTakerLogin/>
-      <Login/>
+      {/* <TestTakerLogin/> */}
+      {/* <Login/> */}
+      {/* <Waitlist /> */}
+      
 
   
       
