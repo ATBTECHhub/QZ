@@ -15,7 +15,7 @@ import useAuthStore from "../../store/authStore";
 
 
 const TakerBase = () => {
-   const User = useAuthStore((state) => state.user);
+   const user = useAuthStore((state) => state.user);
 
    // Chart data
    const data = {
@@ -43,26 +43,26 @@ const TakerBase = () => {
   return (
     <section className="pl-[54px] py-[59px] pr-[70px]">
       <div className="grid md:flex  justify-between gap-3 lg:gap-64 ">
-        <h1 className="text-xl test-darkPrimary">Welcome Back, James</h1>
+        <h1 className="text-xl test-darkPrimary">Welcome Back, {user}</h1>
         <div className="flex gap-3 lg:gap-14">
           <div className="flex items-center bg-white py-2 px-5 rounded-[23px] gap-2">
             <IoIosSearch />
             <input type="search" className="outline-none bg-transparent" />
           </div>
-           <Link to="/taker-dashboard/view-profile">
-          <svg
-            width="18"
-            height=""
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <Link to="/taker-dashboard/view-profile">
+            <svg
+              width="18"
+              height=""
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-            <path
-              d="M9.00548 8.72962C11.3049 8.72962 13.2835 6.80745 13.2835 4.30437C13.2835 1.83204 11.2939 0 9.00548 0C6.71657 0 4.72748 1.87219 4.72748 4.32487C4.72748 6.80745 6.71703 8.72962 9.00548 8.72962ZM2.2889 18H15.7221C17.4013 18 18 17.5498 18 16.6686C18 14.0856 14.5457 10.5219 9.00548 10.5219C3.4548 10.5219 0 14.0856 0 16.6686C0 17.5498 0.599148 18 2.2889 18Z"
-              fill="#231F20"
+              <path
+                d="M9.00548 8.72962C11.3049 8.72962 13.2835 6.80745 13.2835 4.30437C13.2835 1.83204 11.2939 0 9.00548 0C6.71657 0 4.72748 1.87219 4.72748 4.32487C4.72748 6.80745 6.71703 8.72962 9.00548 8.72962ZM2.2889 18H15.7221C17.4013 18 18 17.5498 18 16.6686C18 14.0856 14.5457 10.5219 9.00548 10.5219C3.4548 10.5219 0 14.0856 0 16.6686C0 17.5498 0.599148 18 2.2889 18Z"
+                fill="#231F20"
               />
-          </svg>
-              </Link>
+            </svg>
+          </Link>
         </div>
       </div>
 
@@ -70,7 +70,6 @@ const TakerBase = () => {
       <h2 className="text-xl font-extrabold leading-7">Summary Widget</h2>
       <TakerWidget />
       <div className="py-4 grid lg:grid-cols-[60%_40%] gap-5">
-        
         {/* TEST CREATED */}
         <div className="py-6 pl-6 pr-16 bg-white border rounded-[12px] text-xs">
           <div className="flex justify-between items-center pb-4 border-b">
@@ -135,7 +134,6 @@ const TakerBase = () => {
 
       <section className="grid lg:grid-cols-[60%_40%] gap-6 rounded-[12px] text-xs">
         <div className="grid gap-5">
-
           {/* Upcoming Tests */}
           <div className="bg-white rounded-lg shadow-tableShadow p-6">
             <h2 className="text-base font-extrabold mb-2 border-b">
@@ -165,7 +163,7 @@ const TakerBase = () => {
               </tbody>
             </table>
           </div>
-          
+
           {/* Completed Tests */}
           <div className="bg-white rounded-[12px] p-6 shadow-tableShadow">
             <h2 className="text-base font-extrabold border-b leading-[22px] mb-2">
@@ -235,7 +233,7 @@ const TakerBase = () => {
               <th className="pb-2">Exam Title</th>
               <th className="pb-2">Status</th>
               <th className="pb-2">Date </th>
-              </tr>
+            </tr>
           </thead>
           <tbody>
             {testProgress.map((test, index) => (

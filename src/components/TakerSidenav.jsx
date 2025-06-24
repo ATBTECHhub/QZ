@@ -1,17 +1,24 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { testTakerDashboard1 } from "../constants/data";
+import useAuthStore from "../store/authStore";
 import logo from "../assets/logoThree.svg";
 
 const TakerSidenav = () => {
-     const [openSection, setOpenSection] = useState(null);
-     const location = useLocation();
-     // Function to toggle sublinks
-     const handleToggle = (index) => {
-       // If the clicked section is already open, close it, otherwise set it as the open section
-       setOpenSection(openSection === index ? null : index);
-     };
+  const [openSection, setOpenSection] = useState(null);
+  const location = useLocation();
+  const handleToggle = (index) => {
+    setOpenSection(openSection === index ? null : index);
+  };
+    const logout = useAuthStore((state) => state.logout);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+      logout();
+
+      navigate("/");
+    };
   return (
     <div className="bg-primary !w-[350px] hidden lg:flex flex-col px-8 py-9 border border-[#808080]">
       <Link to="/taker-dashboard" className="mb-4">
@@ -41,15 +48,29 @@ const TakerSidenav = () => {
                 )}
               </div>
             ) : (
-              <Link
-                to={item.to}
-                className="flex justify-between items-center gap-[10px] text-white"
-              >
-                <div className="flex items-center gap-[10px]">
-                  <img src={item.icon} alt="" />
-                  <span>{item.text}</span>
-                </div>
-              </Link>
+              <div>
+                {item.text === "Log out" ? (
+                  <button
+                    onClick={handleLogout}
+                    className="flex justify-between items-center gap-[10px] text-white"
+                  >
+                    <div className="flex items-center gap-[10px]">
+                      <img src={item.icon} alt="" />
+                      <span>{item.text}</span>
+                    </div>
+                  </button>
+                ) : (
+                  <Link
+                    to={item.to}
+                    className="flex justify-between items-center gap-[10px] text-white"
+                  >
+                    <div className="flex items-center gap-[10px]">
+                      <img src={item.icon} alt="" />
+                      <span>{item.text}</span>
+                    </div>
+                  </Link>
+                )}
+              </div>
             )}
 
             {item.sublinks && openSection === index && (
