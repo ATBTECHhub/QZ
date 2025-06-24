@@ -401,8 +401,8 @@ export const testTakerDashboard1 = [
     ],
   },
   {
-    text: "Log out ",
-    to: "/taker-dashboard",
+    text: "Log out",
+    to: "/student-dashboard",
     icon: logoutIcon,
   },
 ];

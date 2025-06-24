@@ -45,8 +45,8 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/" element={<Waitlist />} />
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Waitlist />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/test-taker-signup" element={<TakerSignup />} />
@@ -96,7 +96,7 @@ function App() {
           <Route path="analytics" element={<Analytics />} />
         </Route>
         {/* test taker routes */}
-        <Route path="/taker-dashboard" element={<TakerDashboard />}>
+        <Route path="/student-dashboard" element={<TakerDashboard />}>
           <Route index element={<TakerBase />} />
           <Route path="test" element={<AvailableTest />} />
           <Route path="available-test" element={<AvailableTest2 />} />
