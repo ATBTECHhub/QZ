@@ -5,6 +5,10 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const Signup = () => {
+  const HandleSignup = async() => {
+    
+  }
+
   const Test = ({ img, heading, instruction, route, name }) => {
     return (
       <section>

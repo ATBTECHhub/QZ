@@ -1,5 +1,5 @@
 const Request = {
-  signup: "/auths/register",
+  signup: "/api/auths/register",
   login: "/auths/login",
   forgotPassword: "/auths/forgot-password",
   waitlist: "/waitlist",
@@ -34,4 +34,4 @@ const Request = {
   // createQuestion: "/questions",
   // updateQuestion: (questionId) => /questions/${questionId},
 };
-export default Request;
+export default Request;

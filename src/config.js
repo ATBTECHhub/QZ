@@ -2,7 +2,9 @@ import axios from "axios";
 import useAuthStore from "./store/authStore";
 // const token = useAuthStore.getState().token;
 export const Axios = axios.create({
-  baseURL: "https://qz-platform-backend-1.onrender.com/api",
+  baseURL: "127.0.0.1:4000",
+  // baseURL: "https://qz-platform-backend-1.onrender.com/api",
+
   headers: {
     "Content-Type": "application/json",
     // "Access-Control-Allow-Origin": "*",
