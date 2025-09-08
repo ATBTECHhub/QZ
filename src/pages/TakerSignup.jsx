@@ -17,15 +17,19 @@ const takerSignup = () => {
     password: "",
     role: "testTaker",
   };
+
   const onSubmit = async (payload, actions) => {
+    console.log(payload);
+    
     try {
       const res = await Axios.post(Request.signup, payload);
+      console.log(res);
       if (res.data.message === "User registered successfully") {
         toast.success("Account created");
         navigate("/login");
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      // toast.error(error.response.data.message);
       console.log(error);
     }
     await new Promise((resolve) => setTimeout(resolve, 1000));

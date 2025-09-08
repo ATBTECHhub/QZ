@@ -1,12 +1,14 @@
 import axios from "axios";
 import useAuthStore from "./store/authStore";
-// const token = useAuthStore.getState().token;
+const token = useAuthStore.getState().token;
 export const Axios = axios.create({
-  baseURL: "https://qz-platform-backend-1.onrender.com/api",
+  baseURL: "http://127.0.0.1:4000/api",
+  // baseURL: "https://qz-platform-backend-1.onrender.com/api",
+
   headers: {
     "Content-Type": "application/json",
-    // "Access-Control-Allow-Origin": "*",
-    // Authorization: `Bearer ${token}`,
+    "Access-Control-Allow-Origin": "*",
+    Authorization: `Bearer ${token}`,
   },
 });
 
