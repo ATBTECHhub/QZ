@@ -106,4 +106,4 @@ For support, contact us at [support@qzplatform.com](mailto:support@qzplatform.co
 
 ## 🏢 Credits
 
-QZ Platform is licensed by the National Authority of Technology Development, Nigeria.
+QZ Platform is licensed by ATB Tech Hub, Nigeria.
