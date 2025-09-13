@@ -1,53 +1,109 @@
-# QZ
+# QZ Platform
 
-QZ is a project designed to [briefly describe the purpose or functionality of the project, e.g., "manage quizzes and questions for educational platforms"].
+A modern, feature-rich examination and assessment platform built with React and Tailwind CSS. QZ Platform enables educational institutions and organizations to create, manage, and administer tests while providing students with a seamless test-taking experience.
 
-## Features
+## 🚀 Features
 
-- [Feature 1, e.g., Create and manage quizzes]
-- [Feature 2, e.g., User authentication]
-- [Feature 3, e.g., Analytics and reporting]
-- ...
+### For Test Creators/Instructors
+- Create and customize tests with multiple question types
+- User and group management system
+- Real-time test monitoring
+- Automated grading system
+- Comprehensive analytics and reporting
+- Question bank management
+- Test scheduling and administration
 
-## Getting Started
+### For Test Takers
+- User-friendly test interface
+- Real-time progress tracking
+- Instant results and feedback
+- Detailed performance analysis
+- Personal profile management
+- Test history and analytics
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Date Handling:** React DatePicker
+- **Routing:** React Router
+- **Font Libraries:** 
+  - Fustat
+  - Poppins
+  - Inter
+  - Rubik
+
+## 🚦 Getting Started
 
 ### Prerequisites
 
-- [List prerequisites, e.g., Node.js, Python, etc.]
-- [Any other dependencies]
+- Node.js (v14 or higher)
+- npm or yarn
 
 ### Installation
 
 ```bash
-git clone https://github.com/ATBTECH/QZ.git
+# Clone the repository
+git clone https://github.com/yourusername/QZ.git
+
+# Navigate to project directory
 cd QZ
-[installation steps, e.g., yarn install, npm install]
+
+# Install dependencies
+npm install
+# or
+yarn install
 ```
 
-### Running the Project
+### Development
 
 ```bash
-[command to run the project, e.g,yarn dev, npm run dev, npm start]
+# Run development server
+npm run dev
+# or
+yarn dev
 ```
 
-## Usage
+The application will start on `http://localhost:5173` by default.
 
-[Provide examples or instructions on how to use the project.]
+## 📁 Project Structure
 
-## Contributing
+```
+QZ/
+├── src/
+│   ├── assets/          # Images and icons
+│   ├── components/      # React components
+│   ├── constants/       # Configuration and constant data
+│   ├── lib/            # Utility functions and API requests
+│   ├── pages/          # Page components
+│   └── index.css       # Global styles
+```
 
-Contributions are welcome! Please open issues or submit pull requests.
+## 🔑 Key Components
+
+- **Dashboard:** Separate dashboards for instructors and test takers
+- **Test Management:** Create, edit, and manage tests
+- **User Management:** Handle user creation and permissions
+- **Results:** View and analyze test results
+- **Profile Management:** User profile editing and management
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/YourFeature`)
-5. Open a pull request
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-[Specify license, e.g., MIT]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
+## 🔰 Support
 
-For questions or support, contact [your email or GitHub profile].
+For support, contact us at [support@qzplatform.com](mailto:support@qzplatform.com)
+
+## 🏢 Credits
+
+QZ Platform is licensed by the National Authority of Technology Development, Nigeria.
