@@ -3,8 +3,10 @@ export const SignupSchema = Yup.object().shape({
   name: Yup.string().min(5, "Too Short!").required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
-    .min(5, "Password must be atleast 5 characters long")
-    .required("Required"),
+    .required("Password is required")
+    .min(8, "Password must be at least 8 characters")
+    .matches(/[0-9]/, "Password must contain at least one number")
+    .matches(/[!@#$%^&*(),.?":{}|<>]/, "Password must contain at least one special character"),
 });
 
 // export const TakerSignupSchema = Yup.object().shape({
