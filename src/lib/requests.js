@@ -1,5 +1,5 @@
 const Request = {
-  signup: "/api/auths/register",
+  signup: "/auths/register",
   login: "/auths/login",
   forgotPassword: "/auths/forgot-password",
   waitlist: "/waitlist",
