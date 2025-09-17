@@ -20,7 +20,7 @@ export const SignupSchema = Yup.object().shape({
 export const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
-    .min(8, "Password must be atleast 5 characters long")
+    .min(5, "Password must be atleast 5 characters long")
     .required("Required"),
   role: Yup.string()
     .required("Role is required")
